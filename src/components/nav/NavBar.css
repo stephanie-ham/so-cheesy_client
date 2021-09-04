@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  background-color: rgb(37, 36, 63);
+  padding: 1rem;
+  margin-top: 0;
+}
+
+.navbar__item {
+  margin: 0 10px;
+  list-style-type: none;
+}
