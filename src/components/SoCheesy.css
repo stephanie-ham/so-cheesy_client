@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Rubik:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+
+body,
+button,
+input,
+select,
+textarea{
+  color: #434040;
+  font-family: "Roboto", sans-serif;
+  /* font-size: 1rem; */
+  /* line-height: 1.3; */
+}
+
+h1, h2, h3, h4 {
+  font-family: "Rubik", sans-serif;
+  letter-spacing: .5pt;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  color:#434040;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h5 {
+  font-family: "Rubik", sans-serif;
+  letter-spacing: .3pt;
+  font-size: 10pt;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 115%;
+}
+
+.main__components {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main__component {
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 .link {
   color: rgb(255, 255, 255);
   text-decoration: none;
@@ -8,4 +63,19 @@
   color: rgb(254, 120, 225);
   text-decoration: none;
   font-weight: 300;
+}
+
+.padding {
+  padding: 0 8rem 3rem 8rem;
+}
+
+
+.home__components {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.home__component {
+  min-width: 100%;
 }
