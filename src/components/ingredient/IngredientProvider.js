@@ -9,9 +9,9 @@ export const IngredientProvider = (props) => {
   const [ingredients, setIngredients] = useState([])
 
   const getIngredients = () => {
-    return fetch(`${URL}/ingredients`)
+    return fetch(`${URL}/ingredients?_expand=image`)
       .then(res => res.json())
-      .then(setAnimals)
+      .then(setIngredients)
   }
 
   const addIngredient = ingredientObj => {
@@ -25,9 +25,14 @@ export const IngredientProvider = (props) => {
       .then(getIngredients)
   }
 
+  const getIngredientByType = type => {
+    return fetch(`${URL}/ingredients/${type}`)
+    .then(response => response.json())
+  }
+
   return (
     <IngredientContext.Provider value={{
-      ingredients, addIngredient, getIngredients
+      ingredients, addIngredient, getIngredients, getIngredientByType
     }}>
       {props.children}
     </ IngredientContext.Provider>

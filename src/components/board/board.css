@@ -1,0 +1,28 @@
+.board__title {
+  width: 100%;
+  text-align: center;
+}
+
+.board__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board__component{
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.board__intro {
+  padding: 3rem 7rem 2rem 7rem;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+
+
+
+

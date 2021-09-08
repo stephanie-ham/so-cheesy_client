@@ -3,28 +3,26 @@ import { IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
 import "./Ingredient.css"
 
-
-export const IngredientList = () => {
+export const CheeseList = () => {
   const { ingredients, getIngredients } = useContext(IngredientContext)
 
   useEffect(() => (
     getIngredients()
-
   ), [])
 
   return (
     <>
+      <h2 className="ingredient__title">Cheeses</h2>
       <section className="ingredient__list">
-        
         {
           ingredients.map(ingredient => {
-
-            return <IngredientCard
-              ingredientType={ingredient.type}
-              key={ingredient.id}
-              ingredient={ingredient}
-            />
-
+            if (ingredient.type === "cheese") {
+              return <IngredientCard
+                ingredientType={ingredient.type}
+                key={ingredient.id}
+                ingredient={ingredient}
+              />
+            }
           })
         }
       </section>

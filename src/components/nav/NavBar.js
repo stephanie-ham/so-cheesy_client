@@ -1,7 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
-import "../SoCheesy.css"
 
 export const NavBar = () => {
   return (
@@ -10,22 +9,22 @@ export const NavBar = () => {
         logo
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/cheeses">cheeses</Link>
+        <Link className="navbar__link" to="/ingredients/cheeses" type="cheeses">cheeses</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/meats">meats</Link>
+        <Link className="navbar__link" to="/ingredients/meats" type="meats">meats</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/fruits">fruits</Link>
+        <Link className="navbar__link" to="/ingredients/fruits" type="fruits">fruits</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/nuts">nuts</Link>
+        <Link className="navbar__link" to="/ingredients/nuts" type="nuts">nuts</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/jams<">jams</Link>
+        <Link className="navbar__link" to="/ingredients/jams" type="jams">jams + spreads</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link link" to="/">home</Link>
+        <Link className="navbar__link" to="/">home</Link>
       </li>
     </ul>
   )
