@@ -7,15 +7,14 @@ export const BoardProvider = (props) => {
   const URL = "http://localhost:8088"
 
   const getBoards = () => {
-    return fetch()
+    return fetch(`${URL}/boards?_expand=user&_sort=user.id`)
     .then(res => res.json())
     .then(setBoards)
-
-
-
-
   }
 
+  const getBoardIngredients = (`${URL}/boardIngredients?_expand=board?_expand=ingredient&_sort=board.id&_sort=ingredient.id`)
+  .then(res => res.json())
+  .then(setBoardIngredients)
 
 
 

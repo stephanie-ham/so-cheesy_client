@@ -1,21 +1,21 @@
-.board__title {
+.form__title {
   width: 100%;
   text-align: center;
 }
 
-.board__form {
+.form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.board__component{
+.form__component{
   justify-content: center;
   width: 100%;
   text-align: center;
 }
 
-.board__intro {
+.form__intro {
   padding: 3rem 7rem 2rem 7rem;
   flex-wrap: wrap;
   /* justify-content: center; */

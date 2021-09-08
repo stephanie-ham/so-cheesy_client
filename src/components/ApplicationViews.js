@@ -6,9 +6,10 @@ import { MeatList } from "./ingredient/MeatList"
 import { FruitList } from "./ingredient/FruitList"
 import { NutList } from "./ingredient/NutList"
 import { JamList } from "./ingredient/JamList"
-import { BoardForm } from "./board/BoardForm"
-import { BoardIntro } from "./board/BoardIntro"
 import { Header } from "./header/Header"
+import { Feed } from "./feed/Feed"
+import { Form } from "./form/Form"
+
 import "./ingredient/Ingredient.css"
 
 export const ApplicationViews = () => {
@@ -19,12 +20,14 @@ export const ApplicationViews = () => {
           <section className="home__components">
               <Header />
             <div className="padding">
-              <BoardIntro />
-              <BoardForm />
+              <Feed />
             </div>
           </section>
         </Route>
         <section className="padding">
+          <Route exact path="/form">
+            <Form />
+          </Route>
           <Route exact path="/ingredients/cheeses">
             <CheeseList />
           </Route>
