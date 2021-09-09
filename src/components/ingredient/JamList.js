@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
-import "./Ingredient.css"
+import "./ingredient.css"
 
 export const JamList = () => {
   const { ingredients, getIngredients } = useContext(IngredientContext)

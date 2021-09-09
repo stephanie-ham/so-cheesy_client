@@ -1,17 +1,15 @@
 import React from "react"
-import "./board.css"
+import "./boardform.css"
 
 export const BoardForm = () => {
 
   return (
     <>
-    <section className="board__form">
-      <h2 className="board__title">Build your Board</h2>
-      <section className="board__component">
-        Hello this is the form
-      </section>
+      <h2 className="boardform__title">Build your Board</h2>
+      <section className="boardform">
+        <p className="temp">Hello this will show the form.</p>
       </section>
     </>
   )
-
 }
+

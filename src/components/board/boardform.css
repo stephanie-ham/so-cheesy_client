@@ -1,0 +1,15 @@
+.boardform__title {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.boardform {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.temp {
+  text-align: center;
+}

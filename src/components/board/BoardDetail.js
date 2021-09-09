@@ -1,0 +1,1 @@
+/* This will render the recipe for the clicked board.*/
