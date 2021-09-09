@@ -70,12 +70,13 @@ h5 {
 }
 
 
-.home__components {
+.feed__components {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
 
-.home__component {
+.feed__component {
   min-width: 100%;
 }

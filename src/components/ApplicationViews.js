@@ -7,44 +7,48 @@ import { FruitList } from "./ingredient/FruitList"
 import { NutList } from "./ingredient/NutList"
 import { JamList } from "./ingredient/JamList"
 import { Header } from "./header/Header"
-import { Feed } from "./feed/Feed"
-import { Form } from "./form/Form"
+import { BoardList } from "./board/BoardList"
+import { BoardForm } from "./board/BoardForm"
+import { BoardProvider } from "./board/BoardProvider"
+import "./ingredient/ingredient.css"
+import "./board/boardform.css"
 
-import "./ingredient/Ingredient.css"
 
 export const ApplicationViews = () => {
   return (
     <>
-      <IngredientProvider>
-        <Route className="home__page" exact path="/">
-          <section className="home__components">
+      <BoardProvider>
+        <IngredientProvider>
+          <Route className="feed__page" exact path="/">
+            <section className="feed__components">
               <Header />
-            <div className="padding">
-              <Feed />
-            </div>
+              <div className="padding">
+                <BoardList />
+              </div>
+            </section>
+          </Route>
+          <section className="padding">
+            <Route exact path="/create">
+              <BoardForm />
+            </Route>
+            <Route exact path="/ingredients/cheeses">
+              <CheeseList />
+            </Route>
+            <Route exact path="/ingredients/meats">
+              <MeatList />
+            </Route>
+            <Route exact path="/ingredients/fruits">
+              <FruitList />
+            </Route>
+            <Route exact path="/ingredients/nuts">
+              <NutList />
+            </Route>
+            <Route exact path="/ingredients/jams">
+              <JamList />
+            </Route>
           </section>
-        </Route>
-        <section className="padding">
-          <Route exact path="/form">
-            <Form />
-          </Route>
-          <Route exact path="/ingredients/cheeses">
-            <CheeseList />
-          </Route>
-          <Route exact path="/ingredients/meats">
-            <MeatList />
-          </Route>
-          <Route exact path="/ingredients/fruits">
-            <FruitList />
-          </Route>
-          <Route exact path="/ingredients/nuts">
-            <NutList />
-          </Route>
-          <Route exact path="/ingredients/jams">
-            <JamList />
-          </Route>
-        </section>
-      </ IngredientProvider>
+        </ IngredientProvider>
+      </ BoardProvider>
     </>
   )
 }
