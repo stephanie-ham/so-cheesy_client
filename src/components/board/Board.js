@@ -1,11 +1,20 @@
 /* This will export clickable boards to BoardList. When clicked, they will go to applicable BoardDetail */
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
-import Pear from '../../images/noun_Pear_3997576.png'
-import Trash from '../../images/noun_Trash_453943.png'
+import { IconButton } from "@material-ui/core"
+import { FavoriteBorderRounded, FavoriteRounded } from "@material-ui/icons"
+// import { HighlightOffRounded, CancelRounded } from "@material-ui/icons"
+// import LikeOff from '../../images/like-off.png'
+// import LikeOn from '../../images/like-on.png'
+// import DislikeOff from '../../images/dislike-off.svg'
+// import DislikeOn from '../../images/dislike-on.svg'
 
 export const Board = (props) => {
+
+  const [board, setBoard] = useState({liked: false});
+
+  /* need currentUser + useEffect to store favorites in application state */
 
   return (
     <>
@@ -16,11 +25,25 @@ export const Board = (props) => {
           </div>
         </Link>
         <div className="board__buttons">
-          <img className="perfect__pair board__button" src={Pear} alt="" />
-          <img className="trash board__button" src={Trash} alt="" />
+
+
+          <div className="card__button" onClick={() => setBoard({liked: true})} >
+            <IconButton>
+              {board.liked ? <FavoriteRounded /> : <FavoriteBorderRounded />}
+            </IconButton>
+          </div>
+
         </div>
       </section>
     </>
   )
 
 }
+
+
+
+          {/* <div className="card__button" disabled={!board.disliked} onClick={() => setBoard({disliked: true})}>
+            <IconButton>
+              {board.disliked ? <CancelRounded /> : <HighlightOffRounded />}
+            </IconButton>
+          </div> */}

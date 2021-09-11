@@ -59,20 +59,6 @@ a {
   align-items: center;
 }
 
-.board__button {
-  padding: 0 7px;
-  flex-basis: 1;
-}
-
-.perfect__pair {
-  width: 11%;
-}
-
-.trash {
-  width: 10%;
-}
-
-
 .button__container {
   margin-top: 1rem;
   display: flex;

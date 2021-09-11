@@ -13,6 +13,7 @@ import { BoardProvider } from "./board/BoardProvider"
 import { BoardDetail } from "./board/BoardDetail"
 import "./ingredient/ingredient.css"
 import "./board/boardform.css"
+import "../styles/button.css"
 
 
 
