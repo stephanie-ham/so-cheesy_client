@@ -6,6 +6,7 @@ button,
 input,
 select,
 textarea{
+  background-color: #F9F4ED;
   color: #434040;
   font-family: "Roboto", sans-serif;
   /* font-size: 1rem; */
@@ -60,9 +61,9 @@ h5 {
 }
 
 .link:hover {
-  color: rgb(254, 120, 225);
+  color: #C195B6;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .padding {

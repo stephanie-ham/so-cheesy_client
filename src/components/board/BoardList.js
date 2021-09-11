@@ -8,6 +8,7 @@ import "./board.css"
 export const BoardList = () => {
 
   const { boards, getBoards } = useContext(BoardContext)
+  const currentUser = parseInt(sessionStorage.getItem("nutshell_user"))
 
   useEffect(() => {
     getBoards()
@@ -18,7 +19,7 @@ export const BoardList = () => {
       <h2 className="boardlist__title">Welcome back!</h2>
       <section className="boardlist">
         {
-          boards.filter(board => board.userId == 1).map(board => {
+          boards.filter(board => board.userId == currentUser).map(board => {
               return (
                 <Board 
                 key={board.id}

@@ -51,7 +51,7 @@ export const ApplicationViews = () => {
             <Route exact path="/ingredients/nuts">
               <NutList />
             </Route>
-            <Route exact path="/ingredients/jams">
+            <Route exact path="/ingredients/jams+spreads">
               <JamList />
             </Route>
           </section>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import { IconButton } from "@material-ui/core"
 import { FavoriteBorderRounded, FavoriteRounded } from "@material-ui/icons"
-// import { HighlightOffRounded, CancelRounded } from "@material-ui/icons"
+import { HighlightOffRounded, CancelRounded } from "@material-ui/icons"
 // import LikeOff from '../../images/like-off.png'
 // import LikeOn from '../../images/like-on.png'
 // import DislikeOff from '../../images/dislike-off.svg'
@@ -12,7 +12,7 @@ import { FavoriteBorderRounded, FavoriteRounded } from "@material-ui/icons"
 
 export const Board = (props) => {
 
-  const [board, setBoard] = useState({liked: false});
+  const [board, setBoard] = useState({ liked: false });
 
   /* need currentUser + useEffect to store favorites in application state */
 
@@ -27,12 +27,16 @@ export const Board = (props) => {
         <div className="board__buttons">
 
 
-          <div className="card__button" onClick={() => setBoard({liked: true})} >
+          <div className="board__button" onClick={() => setBoard({ liked: true })} >
             <IconButton>
               {board.liked ? <FavoriteRounded /> : <FavoriteBorderRounded />}
             </IconButton>
           </div>
-
+          <div className="board__button" disabled={!board.disliked} onClick={() => setBoard({ disliked: true })}>
+            <IconButton>
+              {board.disliked ? <CancelRounded /> : <HighlightOffRounded />}
+            </IconButton>
+          </div>
         </div>
       </section>
     </>
@@ -42,8 +46,3 @@ export const Board = (props) => {
 
 
 
-          {/* <div className="card__button" disabled={!board.disliked} onClick={() => setBoard({disliked: true})}>
-            <IconButton>
-              {board.disliked ? <CancelRounded /> : <HighlightOffRounded />}
-            </IconButton>
-          </div> */}
