@@ -10,8 +10,10 @@ import { Header } from "./header/Header"
 import { BoardList } from "./board/BoardList"
 import { BoardForm } from "./board/BoardForm"
 import { BoardProvider } from "./board/BoardProvider"
+import { BoardDetail } from "./board/BoardDetail"
 import "./ingredient/ingredient.css"
 import "./board/boardform.css"
+
 
 
 export const ApplicationViews = () => {
@@ -19,6 +21,7 @@ export const ApplicationViews = () => {
     <>
       <BoardProvider>
         <IngredientProvider>
+          
           <Route className="feed__page" exact path="/">
             <section className="feed__components">
               <Header />
@@ -27,7 +30,11 @@ export const ApplicationViews = () => {
               </div>
             </section>
           </Route>
+
           <section className="padding">
+            <Route exact path="/board/detail/:boardId(\d+)">
+              <BoardDetail />
+            </Route>
             <Route exact path="/create">
               <BoardForm />
             </Route>

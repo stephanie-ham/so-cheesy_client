@@ -1,6 +1,6 @@
 /* This will map through all of a user's boards, imported from Board.js */
 
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Board } from "./Board"
 import { BoardContext } from "./BoardProvider"
 import "./board.css"

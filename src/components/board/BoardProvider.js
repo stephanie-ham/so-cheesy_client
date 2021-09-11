@@ -4,6 +4,7 @@ export const BoardContext = createContext()
 
 export const BoardProvider = (props) => {
   const [boards, setBoards] = useState([])
+  const [boardIngredients, setBoardIngredients] = useState([])
   const URL = "http://localhost:8088"
 
   const getBoards = () => {
@@ -22,10 +23,16 @@ export const BoardProvider = (props) => {
     })
     .then(getBoards)
   }
-  
+
+  const getBoardIngredients = () => {
+    return fetch(`${URL}/boardIngredients?_expand=ingredient`)
+    .then(res => res.json())
+    .then(setBoardIngredients)
+  }
+
   return (
     <BoardContext.Provider value={{
-      boards, getBoards, addBoard
+      boards, getBoards, addBoard, getBoardIngredients, boardIngredients
     }}>
       {props.children}
     </BoardContext.Provider>
