@@ -1,16 +1,40 @@
 .navbar {
+  padding: .5rem 3rem;
   width: 100%;
   display: flex;
-  justify-content: left;
-  background-color: rgb(0, 0, 0);
-  padding: 1rem;
-  margin-top: 0;
-  margin-bottom: 0;
+  flex-wrap: wrap;
+  background-color: #423E49;
+  /* padding: 1rem; */
+  align-items: center;
   /* width: 100%; */
+}
+
+.navbar a {
+  color: #F9F4ED;
 }
 
 .navbar__item {
   margin: 0 10px;
   list-style-type: none;
   flex-wrap: nowrap;
+  color: #F9F4ED;
+}
+
+.navbar__item:active {
+  color: #F9F4ED;
+}
+
+.navbar__left {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 6;
+}
+
+.navbar__right {
+  flex: 1;
+}
+
+.button__override {
+  border: #F9F4ED 2px solid;
+  color: #F9F4ED;
 }
