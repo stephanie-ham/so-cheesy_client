@@ -2,6 +2,7 @@ import React from "react"
 
 export const IngredientCard = (props) => {
 
+
   return (
     <>
       <section className="ingredient" key={props.ingredient.id} type={props.ingredient.type}>
@@ -11,10 +12,13 @@ export const IngredientCard = (props) => {
           </div>
           <div className="ingredient__info" key={props.ingredient.id}>
             <h5 className="ingredient__name">{props.ingredient.name}</h5>
-            <p className="ingredient__description">{props.ingredient.description}</p>
+            {props.boardIngredientId ? <><h6 className="ingredient__type">{props.ingredient.type}</h6></> : <> </> }
           </div>
         </div>
       </section>
     </>
   )
 }
+
+
+/* add tertiary for card like and dislike buttons. do not allow workable buttons on form */

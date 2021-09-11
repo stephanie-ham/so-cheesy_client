@@ -19,9 +19,9 @@ h1, h2, h3, h4 {
 }
 
 h6 {
-  font-family: "Rubik", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: .3pt;
+  font-weight: 400;
 }
 
 p {
