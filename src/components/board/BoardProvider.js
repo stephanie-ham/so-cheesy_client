@@ -10,7 +10,7 @@ export const BoardProvider = (props) => {
   const getBoards = () => {
     return fetch(`${URL}/boards?_expand=image&_sort=image.url`)
     .then(res => res.json())
-    .then(setBoards)
+    .then (setBoards)
   }
 
   const addBoard = boardObj => {
