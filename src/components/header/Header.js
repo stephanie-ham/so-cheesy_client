@@ -1,5 +1,4 @@
-import React, { useContext } from "react"
-import { ImageContext } from "../image/ImageProvider"
+import React from "react"
 import "./header.css"
 
 

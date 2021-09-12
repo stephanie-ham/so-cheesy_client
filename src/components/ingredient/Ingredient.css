@@ -20,9 +20,9 @@
 }
 
 .ingredient {
-  flex: 0 25 20%;
-  margin: .5rem;
-  min-width: 7rem;
+  flex: 0 25 15%;
+  margin: 2.5rem .8rem 0 .8rem;
+  min-width: 8rem;
   border-radius: 5px;
   box-shadow: 0px 0px 8px 1px rgba(91, 99, 102, 0.098);
   background-color: #fefcfa;
@@ -39,17 +39,19 @@
 
 .ingredient__info {
   width: 100%;
-  margin: .3rem .5rem .4rem .5rem;
+  margin: .3rem .5rem .3rem .5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  min-height: 2rem;
 }
 
 .ingredient__name {
   width: 100%;
   margin-bottom: 0;
   margin-top: 0;
-  padding-right: 10px;
+  margin-right: 10px;
+
 }
 
 .ingredient__type {

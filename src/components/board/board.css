@@ -60,6 +60,26 @@ a {
   align-items: center;
 }
 
+.onClick__button--wrapper {
+  padding: 0 .5rem;
+  width: 16%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
+}
+
+.board__button {
+  width: 100%;
+}
+
+.board__button:hover {
+  width: 110%;
+}
+
+
 .button__container {
   margin-top: 1rem;
   display: flex;

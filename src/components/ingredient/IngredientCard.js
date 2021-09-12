@@ -8,11 +8,11 @@ export const IngredientCard = (props) => {
       <section className="ingredient" key={props.ingredient.id} type={props.ingredient.type}>
         <div className="ingredient__container">
           <div className="ingredient__image">
-            <img src={props.ingredient.image.url} />
+            <img src={`/images/${props.ingredient.image.url}`} alt="" />
           </div>
           <div className="ingredient__info" key={props.ingredient.id}>
             <h5 className="ingredient__name">{props.ingredient.name}</h5>
-            {props.boardIngredientId ? <><h6 className="ingredient__type">{props.ingredient.type}</h6></> : <> </> }
+            {props.boardIngredientId ? <><h6 className="ingredient__type">{props.ingredient.type}</h6></> : <> </>}
           </div>
         </div>
       </section>

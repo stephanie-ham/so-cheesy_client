@@ -12,7 +12,7 @@ export const SoCheesy = () => {
     <>
       <Route
         render={() => {
-          if (sessionStorage.getItem("nutshell_user")) {
+          if (sessionStorage.getItem("block-cheese-app_user")) {
             return (
               <>
                 <section className="main__components">
@@ -28,7 +28,7 @@ export const SoCheesy = () => {
           }
         }}
       />
-      
+
       <Route path="/login">
         <Login />
       </Route>

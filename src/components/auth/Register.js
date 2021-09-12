@@ -45,7 +45,7 @@ export const Register = () => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 // The user id is saved under the key nutshell_user in session Storage. Change below if needed!
-                                sessionStorage.setItem("nutshell_user", createdUser.id)
+                                sessionStorage.setItem("block-cheese-app_user", createdUser.id)
                                 history.push("/")
                             }
                         })
