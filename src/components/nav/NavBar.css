@@ -4,9 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #423E49;
-  /* padding: 1rem; */
   align-items: center;
-  /* width: 100%; */
 }
 
 .navbar a {
@@ -18,6 +16,7 @@
   list-style-type: none;
   flex-wrap: nowrap;
   color: #F9F4ED;
+  font-size: .9rem;
 }
 
 .navbar__item:active {

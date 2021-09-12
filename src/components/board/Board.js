@@ -49,10 +49,10 @@ export const Board = (props) => {
           </div>
         </Link>
         <div className="board__buttons">
-          <div className="onClick__button--wrapper" onClick={() => { handleLikeButton() }}>
+          <div className="onClick__button--wrapper" onClick={handleLikeButton}>
             <img className="board__button" src={props.isLiked ? LikeOn : LikeOff} alt="" />
           </div>
-          <div className="onClick__button--wrapper" onClick={() => { handleDislikeButton() }}>
+          <div className="onClick__button--wrapper" onClick={handleDislikeButton}>
             <img className="board__button" src={props.isDisliked ? DislikeOn : DislikeOff} alt="" />
           </div>
         </div>

@@ -1,6 +1,6 @@
 /* This will map through all of a user's boards, imported from Board.js */
 
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { Board } from "./Board"
 import { BoardContext } from "./BoardProvider"
 import "./board.css"
@@ -9,7 +9,6 @@ export const BoardList = () => {
 
   const { boards, getBoards, boardLikes, getBoardLikes, boardDislikes, getBoardDislikes } = useContext(BoardContext)
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
-
 
   useEffect(() => {
     getBoards().then(getBoardLikes())
@@ -35,7 +34,7 @@ export const BoardList = () => {
 
     boardLikes.map((boardLike) => {
       if (currentUser === boardLike.userId &&
-        board.id === boardLike.userId) {
+        board.id === boardLike.boardId) {
           boardLikeId = boardLike.id
         }
     })
@@ -48,7 +47,7 @@ export const BoardList = () => {
 
     boardDislikes.map((boardDislike) => {
       if (currentUser === boardDislike.userId &&
-        board.id === boardDislike.userId) {
+        board.id === boardDislike.boardId) {
           boardDislikeId = boardDislike.id
         }
     })
@@ -57,7 +56,7 @@ export const BoardList = () => {
 
   return (
     <>
-      <h2 className="boardlist__title">Welcome back!</h2>
+      <h2 className="page__title">Welcome back!</h2>
       <section className="boardlist">
         {
           boards.filter(board => board.userId === currentUser).map(board => {
@@ -74,7 +73,6 @@ export const BoardList = () => {
             }
           )
         }
-
       </section>
     </>
   )

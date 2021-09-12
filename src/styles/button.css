@@ -3,3 +3,32 @@
   flex-basis: 1;
   width: 16%;
 }
+
+.mediumButton {
+  font-size: .8rem;
+  border-radius: 4px;
+  border: #7F9093 1.8px solid;
+  padding: .4rem .6rem;
+  color: #7F9093;
+  background-color: #F9F4ED;
+}
+
+.mediumButton:hover:enabled {
+  background-color: #7F9093;
+  font-weight: 500;
+  color: #F9F4ED;
+  border: #7F9093 2px solid;
+  box-shadow: 0px 0px 8px 1px rgba(91, 99, 102, 0.098);
+  cursor: pointer;
+}
+
+.mediumButton:disabled {
+  background-color: #7f909357;
+  font-weight: 500;
+  color: #7f90938a;
+  border: #7f909357 2px solid;
+}
+
+.create__button, .returnhome__button {
+  margin: 2rem;
+}

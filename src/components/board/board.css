@@ -1,13 +1,11 @@
-.boardlist__title {
-  padding-top: 2rem;
-  text-align: center;
-}
+
 
 .boardlist {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 a {
@@ -20,22 +18,21 @@ a {
   min-width: 12rem;
   flex-wrap: wrap;
   flex: 0 15 28%;
-  margin: 1rem .8rem;
-  /* display: flex;
-  flex: 0 15 28%;
-  margin: .8rem; */
+  margin: 1.9rem .8rem;
+  justify-content: center;
 }
 
 .board__title {
   width: 100%;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.4rem;
+  padding: 1rem;
 }
 
 .board__container {
   background-color: #7f909375;
-  width: 100%;
-  height: 12rem;
+  width: 13rem;
+  height: 13rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

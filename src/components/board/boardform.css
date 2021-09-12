@@ -1,14 +1,13 @@
-.boardform {
+.boardform, .create {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.boardform__title {
-  width: 100%;
-  padding-top: 2rem;
-  text-align: center;
+.create__subtitle {
+  width: 50%;
+  margin: .5rem 2rem;
 }
 
 fieldset {
