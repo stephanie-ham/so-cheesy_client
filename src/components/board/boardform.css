@@ -1,15 +1,64 @@
-.boardform__title {
-  padding-top: 2rem;
-  text-align: center;
-}
-
-.boardform {
+.boardform, .create {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.temp {
+.create__subtitle {
+  width: 50%;
+  margin: .5rem 2rem;
+}
+
+fieldset {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 3rem;
+  justify-content: center;
+}
+
+.form__ingredient--list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form__ingredient {
+  margin-bottom: 1rem;
+  flex: 0 15 15%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form__list--container {
+  min-width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form__checkbox--container {
+  padding-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox {
+  margin-top: .6rem;
+}
+
+.list__label {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   text-align: center;
 }

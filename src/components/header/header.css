@@ -1,21 +1,12 @@
-/* 
-.header {
-  min-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-} */
-
 .header__container {
   display: flex;
   margin: 0;
   min-width: 100%;
-  /* flex-wrap: wrap; */
   height: 20rem;
   justify-content: center;
   align-items: center;
   background-color: black;
 }
-
 
 .header__image {
   opacity: 75%;
@@ -25,5 +16,4 @@
   flex-shrink: initial; 
   overflow: hidden;
   flex-wrap: wrap;
-
 }

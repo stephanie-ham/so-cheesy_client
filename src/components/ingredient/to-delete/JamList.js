@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
-import { IngredientContext } from "./IngredientProvider"
-import { IngredientCard } from "./IngredientCard"
+import { IngredientContext } from "../IngredientProvider"
+import { IngredientCard } from "../IngredientCard"
 import "./ingredient.css"
 
 export const JamList = () => {
@@ -12,7 +12,7 @@ export const JamList = () => {
 
   return (
     <>
-      <h2 className="ingredient__title">Jams + Spreads</h2>
+      <h2 className="page__title">Jams + Spreads</h2>
       <section className="ingredient__list">
         {
           ingredients.map(ingredient => {

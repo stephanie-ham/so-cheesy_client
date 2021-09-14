@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
-import { IngredientContext } from "./IngredientProvider"
-import { IngredientCard } from "./IngredientCard"
+import { IngredientContext } from "../IngredientProvider"
+import { IngredientCard } from "../IngredientCard"
 import "./ingredient.css"
 
 export const MeatList = () => {
@@ -12,7 +12,7 @@ export const MeatList = () => {
 
   return (
     <>
-      <h2 className="ingredient__title">Meats</h2>
+      <h2 className="page__title">Meats</h2>
       <section className="ingredient__list">
         {
           ingredients.map(ingredient => {

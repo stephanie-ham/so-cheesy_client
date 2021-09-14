@@ -5,7 +5,6 @@ import { useParams, Link } from "react-router-dom"
 import { BoardContext } from "./BoardProvider";
 import { IngredientContext } from "../ingredient/IngredientProvider";
 import { IngredientCard } from "../ingredient/IngredientCard";
-import { BoardList } from "./BoardList";
 import "../ingredient/ingredient.css"
 
 
@@ -17,11 +16,11 @@ export const BoardDetail = () => {
   const { ingredients, getIngredients } = useContext(IngredientContext)
 
 
-  useEffect(() => {
+  useEffect(() => (
     getBoards()
       .then(getBoardIngredients())
       .then(getIngredients())
-  }, [])
+  ), [])
 
   useEffect(() => {
     const thisBoard = boards.find(b => b.id === parseInt(boardId)) || { board: {} }
@@ -51,7 +50,7 @@ export const BoardDetail = () => {
   return (
     <>
       <section className="board__ingredients">
-        <h2 className="ingredient__title">{board.title}</h2>
+        <h2 className="page__title">{board.title}</h2>
         <h5 className="ingredient__subtitle">Ingredients</h5>
         <section className="ingredient__list">
           {
@@ -68,7 +67,7 @@ export const BoardDetail = () => {
         </section>
         <section className="button__container">
           <Link to={`/`}>
-            <button className="button">
+            <button className="mediumButton returnhome__button">
               Back to Feed
             </button>
           </Link>
