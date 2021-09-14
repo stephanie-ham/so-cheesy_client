@@ -103,6 +103,9 @@ export const NavBar = () => {
             <Link className="navbar__item link" color="inherit" to="/create">
               create
             </Link>
+            <Link className="navbar__item link" color="inherit" to="/test">
+              temp: form test
+            </Link>
           </Breadcrumbs>
         </section >
         <section className="navbar__right">

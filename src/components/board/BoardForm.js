@@ -1,18 +1,92 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BoardContext } from "./BoardProvider"
 import { BoardIngredientSelect } from "./BoardIngredientSelect"
 import "./boardform.css"
 
+/* is there a way to have addBoard run before the ingredient piece? How do we store a board id if it hasn't been created yet?! */
 
 export const BoardForm = () => {
 
-  const { getBoards, addBoard } = useContext(BoardContext);
+  const { addBoard, 
+    addBoardIngredient } = useContext(BoardContext);
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
   const history = useHistory();
 
+  const [cheeses, setCheeses] = useState([])
+  const handleSetCheeses = (cheeses) => {
+    setCheeses(cheeses)
+  }
+  const handleAddCheeses = () => {
+    cheeses.forEach((cheese) => {
+      addBoardIngredient({
+        ingredientId: parseInt(cheese),
+        boardId: 10
+      })
+    })
+  }
+
+  const [meats, setMeats] = useState([])
+  const handleSetMeats = (meats) => {
+    setMeats(meats)
+  }
+  const handleAddMeats = () => {
+    meats.forEach((meat) => {
+      addBoardIngredient({
+        ingredientId: parseInt(meat),
+        boardId: 10
+      })
+    })
+  }
+
+  const [fruits, setFruits] = useState([])
+  const handleSetFruits = (fruits) => {
+    setFruits(fruits)
+  }
+  const handleAddFruits = () => {
+    fruits.forEach((fruit) => {
+      addBoardIngredient({
+        ingredientId: parseInt(fruit),
+        boardId: 10
+      })
+    })
+  }
+
+  const [nuts, setNuts] = useState([])
+  const handleSetNuts = (nuts) => {
+    setNuts(nuts)
+  }
+  const handleAddNuts = () => {
+    nuts.forEach((nut) => {
+      addBoardIngredient({
+        ingredientId: parseInt(nut),
+        boardId: 10
+      })
+    })
+  }
+
+  const [jams, setJams] = useState([])
+  const handleSetJams = (jams) => {
+    setJams(jams)
+  }
+  const handleAddJams = () => {
+    jams.forEach((jam) => {
+      addBoardIngredient({
+        ingredientId: parseInt(jam),
+        boardId: 10
+      })
+    })
+  }
   
-  const [board, setBoard] = useState({});
+  const [board, setBoard] = useState({
+    boardId: 0,
+    userId: 0,
+    title: "",
+    imageId: 4
+  });
+
+  //create in provider saveFullBoard
+      //saveBoard.then(saveIngredients) in provider... when returning board id, save ingredients
 
   const [isLoading, setIsLoading] = useState(true);
   // const [isChecked, setIsChecked] = useState(true);
@@ -33,30 +107,15 @@ export const BoardForm = () => {
       userId: currentUser,
       imageId: 4
     })
-    .then(() => history.push("/"))
+
+    handleAddCheeses()
+    handleAddMeats()
+    handleAddFruits()
+    handleAddNuts()
+    handleAddJams()
+
+    history.push("/")
   }
-
-
-  // const handleSaveBoard = () => {
-
-  //   setIsLoading(true);
-
-  //   addBoard({
-  //     title: board.title,
-  //     userId: currentUser
-  //   })
-  //   .then(addBoardIngredient({
-  //     boardId: parseInt(board.id),
-  //     ingredientId: parseInt(boardIngredient.ingredientId)
-  //   }))
-  //   .then(() => history.push("/"))
-  // }
-
-  // useEffect(() => {
-  //   getBoards().then(() => {
-  //     setIsLoading(false)
-  //   })
-  // }, [])
 
   return (
     <>
@@ -70,7 +129,8 @@ export const BoardForm = () => {
               required autoFocus 
               className="form-control" 
               placeholder="Title of Board" 
-              onChange={handleInputChange} />
+              onChange={ handleInputChange } 
+            />
           </div>
         </fieldset>
 
@@ -78,6 +138,7 @@ export const BoardForm = () => {
           <BoardIngredientSelect
             labelName="Cheeses"
             ingredientType="cheese"
+            setIngredients={ handleSetCheeses }
           />
         </fieldset>
 
@@ -85,6 +146,7 @@ export const BoardForm = () => {
           <BoardIngredientSelect
             labelName="Meats"
             ingredientType="meat"
+            setIngredients={ handleSetMeats }
           />
         </fieldset>
 
@@ -92,13 +154,15 @@ export const BoardForm = () => {
           <BoardIngredientSelect
             labelName="Fruits"
             ingredientType="fruit"
+            setIngredients={ handleSetFruits }
           />
         </fieldset>
 
         <fieldset>
           <BoardIngredientSelect
             labelName="Nuts"
-            ingredienttype="nut"
+            ingredientType="nut"
+            setIngredients={ handleSetNuts }
           />
         </fieldset>
 
@@ -106,6 +170,7 @@ export const BoardForm = () => {
           <BoardIngredientSelect
             labelName="Jams + Spreads"
             ingredientType="jam+spread"
+            setIngredients={ handleSetJams }
           />
         </fieldset>
 
@@ -120,202 +185,3 @@ export const BoardForm = () => {
   )
 }
 
-
-// delete if not needed
-
-  /*
-          <fieldset>
-            <div className="form-group">
-              <label className="list__label" htmlFor="ingredientId">Cheeses:</label>
-              <div className="form__ingredient--list">
-                {
-                  ingredients.map(ingredient => {
-                    if (ingredient.type === "cheese") {
-                      return (
-                        <>
-                          <div className="form__ingredient">
-
-                            <IngredientCard
-                              key={ingredient.id}
-                              value={ingredient.id}
-                              ingredient={ingredient}
-                              ingredientType={ingredient.type}
-                            />
-
-                            <div className="form__checkbox--container">
-                              <input 
-                                type="checkbox" 
-                                multiple="true"
-                                className="checkbox" 
-                                id="ingredientId" 
-                                key={ingredient.id} 
-                                value={ingredient.id} 
-                                // checked={isChecked}
-                                onChange={handleIngredientInput} />
-                            </div>
-                          </div>
-                        </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <div className="form-group">
-              <label className="list__label" htmlFor="ingredientId">Meats:</label>
-              <div className="form__ingredient--list">
-                {
-                  ingredients.map(ingredient => {
-                    if (ingredient.type === "meat") {
-                      return (
-                        <>
-                          <div className="form__ingredient">
-
-                            <IngredientCard
-                              key={ingredient.id}
-                              value={ingredient.id}
-                              ingredient={ingredient}
-                              ingredientType={ingredient.type}
-                            />
-
-                            <div className="form__checkbox--container">
-                              <input 
-                                type="checkbox" 
-                                multiple="true"
-                                className="checkbox" 
-                                id="ingredientId" 
-                                key={ingredient.id} 
-                                value={ingredient.id} 
-                                // checked={isChecked}
-                                onChange={handleIngredientInput} />
-                            </div>
-                          </div>
-                        </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <div className="form-group">
-              <label className="list__label" htmlFor="ingredientId">Fruits:</label>
-              <div className="form__ingredient--list">
-                {
-                  ingredients.map(ingredient => {
-                    if (ingredient.type === "fruit") {
-                      return (
-                        <>
-                          <div className="form__ingredient">
-
-                            <IngredientCard
-                              key={ingredient.id}
-                              value={ingredient.id}
-                              ingredient={ingredient}
-                              ingredientType={ingredient.type}
-                            />
-
-                            <div className="form__checkbox--container">
-                              <input 
-                                type="checkbox" 
-                                multiple="true"
-                                className="checkbox" 
-                                id="ingredientId" 
-                                key={ingredient.id} 
-                                value={ingredient.id} 
-                                // checked={isChecked}
-                                onChange={handleIngredientInput} />
-                            </div>
-                          </div>
-                        </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <div className="form-group">
-              <label className="list__label" htmlFor="ingredientId">Nuts:</label>
-              <div className="form__ingredient--list">
-                {
-                  ingredients.map(ingredient => {
-                    if (ingredient.type === "nut") {
-                      return (
-                        <>
-                          <div className="form__ingredient">
-
-                            <IngredientCard
-                              key={ingredient.id}
-                              value={ingredient.id}
-                              ingredient={ingredient}
-                              ingredientType={ingredient.type}
-                            />
-
-                            <div className="form__checkbox--container">
-                              <input 
-                                type="checkbox" 
-                                multiple="true"
-                                className="checkbox" 
-                                id="ingredientId" 
-                                key={ingredient.id} 
-                                value={ingredient.id} 
-                                // checked={isChecked}
-                                onChange={handleIngredientInput} />
-                            </div>
-                          </div>
-                        </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <div className="form-group">
-              <label className="list__label" htmlFor="ingredientId">Jams + Spreads:</label>
-              <div className="form__ingredient--list">
-                {
-                  ingredients.map(ingredient => {
-                    if (ingredient.type === "jam") {
-                      return (
-                        <>
-                          <div className="form__ingredient">
-
-                            <IngredientCard
-                              key={ingredient.id}
-                              value={ingredient.id}
-                              ingredient={ingredient}
-                              ingredientType={ingredient.type}
-                            />
-
-                            <div className="form__checkbox--container">
-                              <input 
-                                type="checkbox" 
-                                multiple="true"
-                                className="checkbox" 
-                                id="ingredientId" 
-                                key={ingredient.id} 
-                                value={ingredient.id} 
-                                // checked={isChecked}
-                                onChange={handleIngredientInput} />
-                            </div>
-                          </div>
-                        </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-          </fieldset>
-          */

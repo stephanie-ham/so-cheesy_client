@@ -20,6 +20,8 @@ import "./ingredient/ingredient.css"
 import "./board/boardform.css"
 import "../styles/button.css"
 
+import { FormTest } from "./board/TestBoardForm"
+
 
 export const ApplicationViews = () => {
   return (
@@ -63,6 +65,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/ingredients/jams+spreads">
               <IngredientList type="jam+spread" title="Jams + Spreads" />
+            </Route>
+            <Route exact path="/test">
+              <FormTest />
             </Route>
           </section>
 

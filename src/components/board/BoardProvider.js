@@ -26,6 +26,22 @@ export const BoardProvider = (props) => {
     .then(getBoards)
   }
 
+  // const addFullBoard = (boardObj, ingredients) => {
+  //   return fetch(`${URL}/boards`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(boardObj)
+  //   })
+  //   .then(board => {
+  //     getBoards()
+  //     addBoardIngredient()
+  //   })
+  // }
+
+  // pass in ingredients array, loop throguh to pass each ingredient into board
+
   const getBoardIngredients = () => {
     return fetch(`${URL}/boardIngredients?_expand=board&_expand=ingredient&_sort=ingredient.id`)
     .then(res => res.json())
