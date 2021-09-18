@@ -26,21 +26,23 @@ export const BoardProvider = (props) => {
     .then(getBoards)
   }
 
-  // const addFullBoard = (boardObj, ingredients) => {
-  //   return fetch(`${URL}/boards`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(boardObj)
-  //   })
-  //   .then(board => {
-  //     getBoards()
-  //     addBoardIngredient()
-  //   })
-  // }
-
-  // pass in ingredients array, loop throguh to pass each ingredient into board
+  const addFullBoard = (boardObj, ingredients) => {
+    return fetch(`${URL}/boards`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(boardObj)
+    })
+    .then(res => res.json())
+    .then(board => {
+      getBoards()
+      ingredients.forEach(ingredient => {
+        ingredient.boardId = board.id
+        addBoardIngredient(ingredient)
+      })
+    })
+  }
 
   const getBoardIngredients = () => {
     return fetch(`${URL}/boardIngredients?_expand=board&_expand=ingredient&_sort=ingredient.id`)
@@ -109,7 +111,7 @@ export const BoardProvider = (props) => {
 
   return (
     <BoardContext.Provider value={{
-      boards, getBoards, addBoard, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike
+      boards, getBoards, addBoard, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike, addFullBoard
     }}>
       {props.children}
     </BoardContext.Provider>

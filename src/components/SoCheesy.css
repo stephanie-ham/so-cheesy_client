@@ -108,3 +108,13 @@ button {
   padding: .5rem 2rem;
   text-align: center;
 }
+
+.main__component {
+  width: 100%;
+}
+
+.header__page {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

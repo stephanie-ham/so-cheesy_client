@@ -1,96 +1,92 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BoardContext } from "./BoardProvider"
 import { BoardIngredientSelect } from "./BoardIngredientSelect"
+import Accordion from '@material-ui/core/Accordion'
 import "./boardform.css"
+import { AcUnitOutlined } from "@material-ui/icons"
+import { AccordionDetails, AccordionSummary } from "@material-ui/core"
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 /* is there a way to have addBoard run before the ingredient piece? How do we store a board id if it hasn't been created yet?! */
 
 export const BoardForm = () => {
 
-  const { addBoard, 
-    addBoardIngredient } = useContext(BoardContext);
-  const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
-  const history = useHistory();
-
+  const { addFullBoard } = useContext(BoardContext);
+  const [isLoading, setIsLoading] = useState(true);
   const [cheeses, setCheeses] = useState([])
-  const handleSetCheeses = (cheeses) => {
-    setCheeses(cheeses)
-  }
-  const handleAddCheeses = () => {
-    cheeses.forEach((cheese) => {
-      addBoardIngredient({
-        ingredientId: parseInt(cheese),
-        boardId: 10
-      })
-    })
-  }
-
   const [meats, setMeats] = useState([])
-  const handleSetMeats = (meats) => {
-    setMeats(meats)
-  }
-  const handleAddMeats = () => {
-    meats.forEach((meat) => {
-      addBoardIngredient({
-        ingredientId: parseInt(meat),
-        boardId: 10
-      })
-    })
-  }
-
-  const [fruits, setFruits] = useState([])
-  const handleSetFruits = (fruits) => {
-    setFruits(fruits)
-  }
-  const handleAddFruits = () => {
-    fruits.forEach((fruit) => {
-      addBoardIngredient({
-        ingredientId: parseInt(fruit),
-        boardId: 10
-      })
-    })
-  }
-
   const [nuts, setNuts] = useState([])
-  const handleSetNuts = (nuts) => {
-    setNuts(nuts)
-  }
-  const handleAddNuts = () => {
-    nuts.forEach((nut) => {
-      addBoardIngredient({
-        ingredientId: parseInt(nut),
-        boardId: 10
-      })
-    })
-  }
-
+  const [fruits, setFruits] = useState([])
   const [jams, setJams] = useState([])
-  const handleSetJams = (jams) => {
-    setJams(jams)
-  }
-  const handleAddJams = () => {
-    jams.forEach((jam) => {
-      addBoardIngredient({
-        ingredientId: parseInt(jam),
-        boardId: 10
-      })
-    })
-  }
-  
+
+
   const [board, setBoard] = useState({
-    boardId: 0,
     userId: 0,
     title: "",
     imageId: 4
   });
 
-  //create in provider saveFullBoard
-      //saveBoard.then(saveIngredients) in provider... when returning board id, save ingredients
+  const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
+  const history = useHistory();
+  const boardIngredientArray = []
 
-  const [isLoading, setIsLoading] = useState(true);
-  // const [isChecked, setIsChecked] = useState(true);
- 
+
+  const handleSetCheeses = (cheeses) => {
+    setCheeses(cheeses)
+  }
+  const handleAddCheeses = () => {
+    cheeses.forEach((cheese) => {
+      boardIngredientArray.push({
+        ingredientId: parseInt(cheese)
+      })
+    })
+  }
+
+  const handleSetMeats = (meats) => {
+    setMeats(meats)
+  }
+  const handleAddMeats = () => {
+    meats.forEach((meat) => {
+      boardIngredientArray.push({
+        ingredientId: parseInt(meat)
+      })
+    })
+  }
+
+  const handleSetNuts = (nuts) => {
+    setNuts(nuts)
+  }
+  const handleAddNuts = () => {
+    nuts.forEach((nut) => {
+      boardIngredientArray.push({
+        ingredientId: parseInt(nut)
+      })
+    })
+  }
+
+  const handleSetFruits = (fruits) => {
+    setFruits(fruits)
+  }
+  const handleAddFruits = () => {
+    fruits.forEach((fruit) => {
+      boardIngredientArray.push({
+        ingredientId: parseInt(fruit)
+      })
+    })
+  }
+
+  const handleSetJams = (jams) => {
+    setJams(jams)
+  }
+  const handleAddJams = () => {
+    jams.forEach((jam) => {
+      boardIngredientArray.push({
+        ingredientId: parseInt(jam)
+      })
+    })
+  }
+
   const handleInputChange = (event) => {
     const newBoard = { ...board } // create a copy 
     newBoard[event.target.id] = event.target.value // set new value
@@ -102,17 +98,17 @@ export const BoardForm = () => {
 
     setIsLoading(true);
 
-    addBoard({ // POST
+    handleAddCheeses()
+    handleAddMeats()
+    handleAddNuts()
+    handleAddFruits()
+    handleAddJams()
+
+    addFullBoard({ // POST
       title: board.title,
       userId: currentUser,
       imageId: 4
-    })
-
-    handleAddCheeses()
-    handleAddMeats()
-    handleAddFruits()
-    handleAddNuts()
-    handleAddJams()
+    }, boardIngredientArray)
 
     history.push("/")
   }
@@ -123,63 +119,113 @@ export const BoardForm = () => {
         <fieldset>
           <div className="form-group">
             <label className="page__title" htmlFor="title">Board Title:</label>
-            <input 
-              type="text" 
-              id="title" 
-              required autoFocus 
-              className="form-control" 
-              placeholder="Title of Board" 
-              onChange={ handleInputChange } 
+            <input
+              type="text"
+              id="title"
+              required autoFocus
+              className="form-control"
+              placeholder="Title of Board"
+              onChange={handleInputChange}
             />
           </div>
         </fieldset>
 
-        <fieldset>
-          <BoardIngredientSelect
-            labelName="Cheeses"
-            ingredientType="cheese"
-            setIngredients={ handleSetCheeses }
-          />
-        </fieldset>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <h5>Cheeses</h5>
+          </AccordionSummary>
+          <AccordionDetails>
+            <fieldset>
+              <BoardIngredientSelect
+                ingredientType="cheese"
+                setIngredients={handleSetCheeses}
+                selectedIngredients={cheeses}
+              />
+            </fieldset>
+          </AccordionDetails>
+        </Accordion>
 
-        <fieldset>
-          <BoardIngredientSelect
-            labelName="Meats"
-            ingredientType="meat"
-            setIngredients={ handleSetMeats }
-          />
-        </fieldset>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <h5>Meats</h5>
+          </AccordionSummary>
+          <AccordionDetails>
+            <fieldset>
+              <BoardIngredientSelect
+                ingredientType="meat"
+                setIngredients={handleSetMeats}
+                selectedIngredients={meats}
+              />
+            </fieldset>
+          </AccordionDetails>
+        </Accordion>
 
-        <fieldset>
-          <BoardIngredientSelect
-            labelName="Fruits"
-            ingredientType="fruit"
-            setIngredients={ handleSetFruits }
-          />
-        </fieldset>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <h5>Nuts</h5>
+          </AccordionSummary>
+          <AccordionDetails>
+            <fieldset>
+              <BoardIngredientSelect
+                ingredientType="nut"
+                setIngredients={handleSetNuts}
+                selectedIngredients={nuts}
+              />
+            </fieldset>
+          </AccordionDetails>
+        </Accordion>
 
-        <fieldset>
-          <BoardIngredientSelect
-            labelName="Nuts"
-            ingredientType="nut"
-            setIngredients={ handleSetNuts }
-          />
-        </fieldset>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <h5>Fruits</h5>
+          </AccordionSummary>
+          <AccordionDetails>
+            <fieldset>
+              <BoardIngredientSelect
+                ingredientType="fruit"
+                setIngredients={handleSetFruits}
+                selectedIngredients={fruits}
+              />
+            </fieldset>
+          </AccordionDetails>
+        </Accordion>
 
-        <fieldset>
-          <BoardIngredientSelect
-            labelName="Jams + Spreads"
-            ingredientType="jam+spread"
-            setIngredients={ handleSetJams }
-          />
-        </fieldset>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <h5>Jams + Spreads</h5>
+          </AccordionSummary>
+          <AccordionDetails>
+            <fieldset>
+              <BoardIngredientSelect
+                ingredientType="jam+spread"
+                setIngredients={handleSetJams}
+                selectedIngredients={jams}
+              />
+            </fieldset>
+          </AccordionDetails>
+        </Accordion>
 
-        <button 
+        <button
           className="mediumButton"
-          isLoading={ isLoading } 
-          onClick={ handleCreate }>
+          isLoading={isLoading}
+          onClick={handleCreate}>
           Create Board!
-        </button>      
+        </button>
       </form>
     </>
   )
