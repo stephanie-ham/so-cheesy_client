@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { BoardContext } from "./BoardProvider"
 import { BoardIngredientSelect } from "./BoardIngredientSelect"
 import Accordion from '@material-ui/core/Accordion'
 import "./boardform.css"
-import { AcUnitOutlined } from "@material-ui/icons"
 import { AccordionDetails, AccordionSummary } from "@material-ui/core"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
-/* is there a way to have addBoard run before the ingredient piece? How do we store a board id if it hasn't been created yet?! */
 
 export const BoardForm = () => {
 
@@ -20,7 +17,6 @@ export const BoardForm = () => {
   const [fruits, setFruits] = useState([])
   const [jams, setJams] = useState([])
 
-
   const [board, setBoard] = useState({
     userId: 0,
     title: "",
@@ -30,7 +26,6 @@ export const BoardForm = () => {
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
   const history = useHistory();
   const boardIngredientArray = []
-
 
   const handleSetCheeses = (cheeses) => {
     setCheeses(cheeses)

@@ -1,8 +1,7 @@
 /* This will export clickable boards to BoardList. When clicked, they will go to applicable BoardDetail */
 
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import { Link } from 'react-router-dom'
-import { useHistory } from "react-router-dom"
 import DislikeOn from "../../images/dislike-on.png"
 import DislikeOff from "../../images/dislike-off.png"
 import LikeOn from "../../images/like-on.png"
@@ -12,7 +11,6 @@ import { BoardContext } from "./BoardProvider"
 export const Board = (props) => {
   const { addBoardLike, removeBoardLike, addBoardDislike, removeBoardDislike } = useContext(BoardContext)
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
-  const history = useHistory();
 
   const handleLikeButton = () => {
     if (!props.isLiked) {
@@ -20,10 +18,8 @@ export const Board = (props) => {
         userId: currentUser,
         boardId: parseInt(props.board.id)
       })
-        .then(() => { history.push("/") })
     } else {
       removeBoardLike(props.boardLikeId)
-        .then(() => { history.push("/") })
     }
   }
 
@@ -33,10 +29,8 @@ export const Board = (props) => {
         userId: currentUser,
         boardId: parseInt(props.board.id)
       })
-        .then(() => { history.push("/") })
     } else {
       removeBoardDislike(props.boardDislikeId)
-        .then(() => { history.push("/") })
     }
   }
 
@@ -59,17 +53,4 @@ export const Board = (props) => {
       </section>
     </>
   )
-}
-
-{/* <div className="board__button" disabled={!board.disliked} onClick={() => setBoard({ disliked: true })}> */ }
-{/* <IconButton>
-              {board.disliked ? <CancelRounded /> : <HighlightOffRounded />}
-            </IconButton> */}
-
-
-{/* <div  onClick={() => setBoard({ liked: true })} > 
-              <IconButton>
-                {board.liked ? <FavoriteRounded /> : <FavoriteBorderRounded />}
-              </IconButton> 
-            </div> */
 }

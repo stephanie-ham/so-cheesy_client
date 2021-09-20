@@ -19,6 +19,11 @@
   flex: 0 25 15%;
   margin: 1.9rem .8rem 0 .8rem;
   min-width: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredient__container {
   border-radius: 5px;
   box-shadow: 0px 0px 8px 1px rgba(91, 99, 102, 0.098);
   background-color: #fefcfa;
@@ -54,4 +59,32 @@
 width: 100%;
 margin-bottom: .1rem;
 margin-top: .1rem;
+}
+
+.card__buttons {
+  width: 100%;
+  display: flex;
+  padding: 7px 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__button {
+  width: 100%;
+}
+
+.card__button:hover {
+  width: 110%;
+}
+
+.onClick__cardbutton--wrapper {
+  padding: .08rem .3rem;
+  width: 22%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
 }

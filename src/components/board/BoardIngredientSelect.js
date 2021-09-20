@@ -58,6 +58,7 @@ export const BoardIngredientSelect = (props) => {
                       value={ingredient.id}
                       ingredient={ingredient}
                       ingredientType={ingredient.type}
+                      disabled={true}
                     />
                     <div className="form__checkbox--container">
                     <FormGroup>

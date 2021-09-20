@@ -30,6 +30,14 @@ fieldset {
   justify-content: center;
 }
 
+.form__ingredient--card {
+  flex: 0 25 15%;
+  margin: 1.9rem .8rem 0 .8rem;
+  min-width: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .form__ingredient {
   margin-bottom: 1rem;
   flex: 0 15 15%;
@@ -62,3 +70,4 @@ fieldset {
   width: 100%;
   text-align: center;
 }
+
