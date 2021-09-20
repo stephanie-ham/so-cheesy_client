@@ -7,51 +7,6 @@ import Button from '@material-ui/core/Button';
 import { Breadcrumbs } from "@material-ui/core";
 import "./NavBar.css"
 
-
-
-
-
-// export const NavBar = () => {
-//   return (
-
-//     <ul className="navbar">
-//       <section className="navbar__left">
-//         <li className="navbar__item">
-//           logo
-//         </li>
-//         {/* <li className="navbar__item active">
-//         <Link className="navbar__link" to="/ingredients/cheeses" type="cheeses">cheeses</Link>
-//       </li>
-//       <li className="navbar__item active">
-//         <Link className="navbar__link" to="/ingredients/meats" type="meats">meats</Link>
-//       </li>
-//       <li className="navbar__item active">
-//         <Link className="navbar__link" to="/ingredients/fruits" type="fruits">fruits</Link>
-//       </li>
-//       <li className="navbar__item active">
-//         <Link className="navbar__link" to="/ingredients/nuts" type="nuts">nuts</Link>
-//       </li>
-//       <li className="navbar__item active">
-//         <Link className="navbar__link" to="/ingredients/jams" type="jams">jams + spreads</Link>
-//       </li> */}
-
-
-//         <li className="navbar__item active">
-//           <Link className="navbar__link" to="/">home</Link>
-//         </li>
-//         <li className="navbar__item active">
-//           <Link className="navbar__link" to="/create">create</Link>
-//         </li>
-//       </section>
-//       <section className="navbar__right">
-//         <li className="navbar__item">
-//           {SimpleMenu()}
-//         </li>
-//       </section>
-//     </ul>
-//   )
-// }
-
 export const NavBar = () => {
 
   function SimpleMenu() {
@@ -80,8 +35,8 @@ export const NavBar = () => {
         >
           <MenuItem onClick={() => history.push("/ingredients/cheeses")}>cheeses</MenuItem>
           <MenuItem onClick={() => history.push("/ingredients/meats")}>meats</MenuItem>
-          <MenuItem onClick={() => history.push("/ingredients/fruits")}>fruits</MenuItem>
           <MenuItem onClick={() => history.push("/ingredients/nuts")}>nuts</MenuItem>
+          <MenuItem onClick={() => history.push("/ingredients/fruits")}>fruits</MenuItem>
           <MenuItem onClick={() => history.push("/ingredients/jams+spreads")}>jams + spreads</MenuItem>
         </Menu>
       </div>
@@ -102,9 +57,6 @@ export const NavBar = () => {
             </Link>
             <Link className="navbar__item link" color="inherit" to="/create">
               create
-            </Link>
-            <Link className="navbar__item link" color="inherit" to="/test">
-              temp: form test
             </Link>
           </Breadcrumbs>
         </section >

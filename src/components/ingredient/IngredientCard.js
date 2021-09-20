@@ -1,7 +1,32 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { IngredientButton } from "./IngredientButton"
+import { IngredientContext } from "./IngredientProvider"
 
 export const IngredientCard = (props) => {
+  const { ingredients, getIngredients, ingredientLikes, getIngredientLikes } = useContext(IngredientContext)
+  const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
 
+  useEffect(() => {
+    getIngredients().then(getIngredientLikes())
+  }, [])
+
+  const isIngredientLiked = (ingredient) => {
+    return ingredientLikes.find((ingredientLike) => (
+      currentUser === ingredientLike.userId &&
+      ingredient.id === ingredientLike.ingredientId
+    ))
+  }
+
+  const findIngredientLikeId = (ingredient) => {
+    let ingredientLikeId
+    ingredientLikes.map((ingredientLike) => {
+      if (currentUser === ingredientLike.userId &&
+        ingredient.id === ingredientLike.ingredientId) {
+          ingredientLikeId = ingredientLike.id
+        }
+    })
+    return ingredientLikeId
+  }
 
   return (
     <>
@@ -15,6 +40,12 @@ export const IngredientCard = (props) => {
             {props.boardIngredientId ? <><h6 className="ingredient__type">{props.ingredient.type}</h6></> : <> </>}
           </div>
         </div>
+          <IngredientButton
+            key={props.ingredient.id}
+            ingredient={props.ingredient}
+            ingredientLikeId={findIngredientLikeId(props.ingredient)}
+            isLiked={isIngredientLiked(props.ingredient)}
+          />
       </section>
     </>
   )

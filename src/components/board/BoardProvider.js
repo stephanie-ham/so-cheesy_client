@@ -11,11 +11,11 @@ export const BoardProvider = (props) => {
 
   const getBoards = () => {
     return fetch(`${URL}/boards?_expand=user`)
-    .then(res => res.json())
-    .then (setBoards)
+      .then(res => res.json())
+      .then(setBoards)
   }
 
-  const addBoard = boardObj => {
+  const addFullBoard = (boardObj, ingredients) => {
     return fetch(`${URL}/boards`, {
       method: "POST",
       headers: {
@@ -23,96 +23,90 @@ export const BoardProvider = (props) => {
       },
       body: JSON.stringify(boardObj)
     })
-    .then(getBoards)
-  }
-
-  // const addFullBoard = (boardObj, ingredients) => {
-  //   return fetch(`${URL}/boards`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(boardObj)
-  //   })
-  //   .then(board => {
-  //     getBoards()
-  //     addBoardIngredient()
-  //   })
-  // }
-
-  // pass in ingredients array, loop throguh to pass each ingredient into board
+      .then(res => res.json())
+      .then(board => {
+        
+        let ingredientPromises = []
+        
+        ingredients.forEach(ingredient => {
+          ingredient.boardId = board.id
+          ingredientPromises.push(addBoardIngredient(ingredient))
+        })
+        Promise.all(ingredientPromises).then(getBoards())
+      })
+      }
 
   const getBoardIngredients = () => {
-    return fetch(`${URL}/boardIngredients?_expand=board&_expand=ingredient&_sort=ingredient.id`)
-    .then(res => res.json())
-    .then(setBoardIngredients)
+      return fetch(`${URL}/boardIngredients?_expand=board&_expand=ingredient&_sort=ingredient.id`)
+        .then(res => res.json())
+        .then(setBoardIngredients)
+    }
+
+    const addBoardIngredient = boardIngredientObj => {
+      return fetch(`${URL}/boardIngredients`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(boardIngredientObj)
+      })
+        .then(getBoardIngredients)
+    }
+
+    const getBoardLikes = () => {
+      return fetch(`${URL}/boardLikes`)
+        .then(res => res.json())
+        .then(setBoardLikes)
+    }
+
+    const addBoardLike = boardLikeObj => {
+      return fetch(`${URL}/boardLikes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(boardLikeObj)
+      })
+        .then(getBoardLikes)
+    }
+
+    const removeBoardLike = boardLikeId => {
+      return fetch(`${URL}/boardLikes/${boardLikeId}`, {
+        method: "DELETE"
+      })
+        .then(getBoardLikes)
+    }
+
+    const getBoardDislikes = () => {
+      return fetch(`${URL}/boardDislikes`)
+        .then(res => res.json())
+        .then(setBoardDislikes)
+    }
+
+    const addBoardDislike = boardDislikeObj => {
+      return fetch(`${URL}/boardDislikes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(boardDislikeObj)
+      })
+        .then(getBoardDislikes)
+    }
+
+    const removeBoardDislike = boardDislikeId => {
+      return fetch(`${URL}/boardDislikes/${boardDislikeId}`, {
+        method: "DELETE"
+      })
+        .then(getBoardDislikes)
+    }
+
+    return (
+      <BoardContext.Provider value={{
+        boards, getBoards, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike, addFullBoard
+      }}>
+        {props.children}
+      </BoardContext.Provider>
+    )
+
   }
-
-  const addBoardIngredient = boardIngredientObj => {
-    return fetch(`${URL}/boardIngredients`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(boardIngredientObj)
-    })
-    .then(getBoardIngredients)
-  }
-
-  const getBoardLikes = () => {
-    return fetch(`${URL}/boardLikes`)
-    .then(res => res.json())
-    .then(setBoardLikes)
-  }
-
-  const addBoardLike = boardLikeObj => {
-    return fetch(`${URL}/boardLikes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(boardLikeObj)
-    })
-    .then(getBoardLikes)
-  }
-
-  const removeBoardLike = boardLikeId => {
-    return fetch(`${URL}/boardLikes/${boardLikeId}`, {
-      method: "DELETE"
-    })
-    .then(getBoardLikes)
-  }
-
-  const getBoardDislikes = () => {
-    return fetch(`${URL}/boardDislikes`)
-    .then(res => res.json())
-    .then(setBoardDislikes)
-  }
-
-  const addBoardDislike = boardDislikeObj => {
-    return fetch(`${URL}/boardDislikes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(boardDislikeObj)
-    })
-    .then(getBoardDislikes)
-  }
-
-  const removeBoardDislike = boardDislikeId => {
-    return fetch(`${URL}/boardDislikes/${boardDislikeId}`, {
-      method: "DELETE"
-    })
-    .then(getBoardDislikes)
-  }
-
-  return (
-    <BoardContext.Provider value={{
-      boards, getBoards, addBoard, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike
-    }}>
-      {props.children}
-    </BoardContext.Provider>
-  )
-
-}

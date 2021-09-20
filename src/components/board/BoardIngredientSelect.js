@@ -11,18 +11,32 @@ export const BoardIngredientSelect = (props) => {
 
   const { ingredients, getIngredients } = useContext(IngredientContext);
 
+  // const handleChange = (event) => {
+
+  //   let ingredientArray = []
+  //     debugger
+  //   ingredients.forEach((ingredient) => {
+  //     if (ingredient.id === parseInt(event.target.value)
+  //       && event.target.checked) {
+  //       ingredientArray.push(ingredient.id)
+  //     }
+  //     props.setIngredients(ingredientArray)
+  //   })
+
+  // }
+
   const handleChange = (event) => {
 
-    let ingredientArray = []
-
-    ingredients.forEach((ingredient) => {
-      if (props.ingredientType === ingredient.type 
-        && ingredient.id === parseInt(event.target.value)
-        && event.target.checked) {
-        ingredientArray.push(ingredient.id)
-      }
-    })
-    props.setIngredients(ingredientArray)
+    let ingredientArray = [...props.selectedIngredients]
+      
+    if (event.target.checked) {
+      ingredientArray.push(parseInt(event.target.value))
+    } else {
+      ingredientArray = ingredientArray.filter(ingredient => 
+        ingredient !== parseInt(event.target.value)
+      )
+    }
+      props.setIngredients(ingredientArray)
   }
 
   useEffect(() => {
@@ -44,12 +58,13 @@ export const BoardIngredientSelect = (props) => {
                       value={ingredient.id}
                       ingredient={ingredient}
                       ingredientType={ingredient.type}
+                      disabled={true}
                     />
                     <div className="form__checkbox--container">
                     <FormGroup>
                       <Checkbox
                         onChange={handleChange}
-                        name={props.ingredientType}
+                        name={`${props.ingredientType}-${ingredient.id}`}
                         id={`${props.ingredientType}-${ingredient.id}`}
                         key={ingredient.id}
                         value={ingredient.id}
@@ -67,4 +82,3 @@ export const BoardIngredientSelect = (props) => {
     </div>
   )
 }
-

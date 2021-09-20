@@ -7,14 +7,12 @@ import { IngredientContext } from "../ingredient/IngredientProvider";
 import { IngredientCard } from "../ingredient/IngredientCard";
 import "../ingredient/ingredient.css"
 
-
 export const BoardDetail = () => {
 
   const { boardIngredients, getBoardIngredients, boards, getBoards } = useContext(BoardContext)
+  const { ingredients, getIngredients } = useContext(IngredientContext)
   const [board, setBoard] = useState([])
   const { boardId } = useParams()
-  const { ingredients, getIngredients } = useContext(IngredientContext)
-
 
   useEffect(() => (
     getBoards()
@@ -35,15 +33,12 @@ export const BoardDetail = () => {
   }
 
   const findBoardIngredientId = (ingredient) => {
-
     let boardIngredientId
-
     boardIngredients.map((boardIngredient) => {
       if (parseInt(boardId) === boardIngredient.boardId && ingredient.id === boardIngredient.ingredientId) {
         boardIngredientId = boardIngredient.id
       }
     })
-
     return boardIngredientId
   }
 
@@ -56,11 +51,13 @@ export const BoardDetail = () => {
           {
             ingredients.map(ingredient => {
               if (isBoardIngredient(ingredient)) {
-                return <IngredientCard
-                  key={ingredient.id}
-                  ingredient={ingredient}
-                  boardIngredientId={findBoardIngredientId(ingredient)}
-                />
+                return (
+                  <IngredientCard
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                    boardIngredientId={findBoardIngredientId(ingredient)}
+                  />
+                )
               }
             })
           }

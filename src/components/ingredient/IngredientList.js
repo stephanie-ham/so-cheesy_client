@@ -17,11 +17,14 @@ export const IngredientList = (props) => {
         {
           ingredients.map(ingredient => {
             if (ingredient.type === `${props.type}`) {
-              return <IngredientCard
-                // ingredientType={ingredient.type}
-                key={ingredient.id}
-                ingredient={ingredient}
-              />
+              return (
+                <>
+                  <IngredientCard
+                    key={ingredient.id}
+                    ingredient={ingredient}
+                  />
+                </>
+              )
             }
           })
         }
