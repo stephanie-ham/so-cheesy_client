@@ -7,11 +7,8 @@ export const BoardCreate = () => {
   const history = useHistory();
 
   const handleOpenForm = () => {
-
     setDisabled(true)
-
     history.push("/create/form")
-
   }
 
   return (

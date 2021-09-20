@@ -8,7 +8,6 @@ import { IngredientCard } from "../ingredient/IngredientCard";
 import "../ingredient/ingredient.css"
 
 export const BoardDetail = () => {
-
   const { boardIngredients, getBoardIngredients, boards, getBoards } = useContext(BoardContext)
   const { ingredients, getIngredients } = useContext(IngredientContext)
   const [board, setBoard] = useState([])

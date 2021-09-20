@@ -3,11 +3,12 @@ import { IngredientButton } from "./IngredientButton"
 import { IngredientContext } from "./IngredientProvider"
 
 export const IngredientCard = (props) => {
-  const { ingredients, getIngredients, ingredientLikes, getIngredientLikes } = useContext(IngredientContext)
+  const { getIngredients, ingredientLikes, getIngredientLikes, ingredientDislikes, getIngredientDislikes } = useContext(IngredientContext)
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
 
   useEffect(() => {
     getIngredients().then(getIngredientLikes())
+    .then(getIngredientDislikes())
   }, [])
 
   const isIngredientLiked = (ingredient) => {
@@ -28,6 +29,24 @@ export const IngredientCard = (props) => {
     return ingredientLikeId
   }
 
+  const isIngredientDisliked = (ingredient) => {
+    return ingredientDislikes.find((ingredientDislike) => (
+      currentUser === ingredientDislike.userId &&
+      ingredient.id === ingredientDislike.ingredientId
+    ))
+  }
+
+  const findIngredientDislikeId = (ingredient) => {
+    let ingredientDislikeId
+    ingredientDislikes.map((ingredientDislike) => {
+      if (currentUser === ingredientDislike.userId &&
+        ingredient.id === ingredientDislike.ingredientId) {
+          ingredientDislikeId = ingredientDislike.id
+        }
+    })
+    return ingredientDislikeId
+  }
+
   return (
     <>
       <section className="ingredient" key={props.ingredient.id} type={props.ingredient.type}>
@@ -45,6 +64,8 @@ export const IngredientCard = (props) => {
             ingredient={props.ingredient}
             ingredientLikeId={findIngredientLikeId(props.ingredient)}
             isLiked={isIngredientLiked(props.ingredient)}
+            ingredientDislikeId={findIngredientDislikeId(props.ingredient)}
+            isDisliked={isIngredientDisliked(props.ingredient)}
           />
       </section>
     </>

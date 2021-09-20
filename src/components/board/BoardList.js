@@ -6,7 +6,6 @@ import { BoardContext } from "./BoardProvider"
 import "./board.css"
 
 export const BoardList = () => {
-
   const { boards, getBoards, boardLikes, getBoardLikes, boardDislikes, getBoardDislikes } = useContext(BoardContext)
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
 
