@@ -39,29 +39,16 @@ fieldset {
 }
 
 .form__ingredient {
+  position: relative;
   margin-bottom: 1rem;
   flex: 0 15 15%;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.form__list--container {
-  min-width: 25%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .form__checkbox--container {
-  padding-top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.checkbox {
-  margin-top: .6rem;
+  position: absolute;
+  right: 6.5rem;
+  top: 1.5rem;
 }
 
 .list__label {
@@ -71,3 +58,6 @@ fieldset {
   text-align: center;
 }
 
+.accordian {
+  background-color: #fefcfa;
+}

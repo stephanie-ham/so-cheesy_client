@@ -3,12 +3,12 @@ import { useHistory } from "react-router-dom"
 import { BoardContext } from "./BoardProvider"
 import { BoardIngredientSelect } from "./BoardIngredientSelect"
 import Accordion from '@material-ui/core/Accordion'
-import "./boardform.css"
 import { AccordionDetails, AccordionSummary } from "@material-ui/core"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import "./boardform.css"
 
 export const BoardForm = () => {
-
+  const [expanded, setExpanded] = React.useState(false);
   const { addFullBoard } = useContext(BoardContext);
   const [isLoading, setIsLoading] = useState(true);
   const [cheeses, setCheeses] = useState([])
@@ -26,6 +26,10 @@ export const BoardForm = () => {
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
   const history = useHistory();
   const boardIngredientArray = []
+
+  const handleAccordianChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   const handleSetCheeses = (cheeses) => {
     setCheeses(cheeses)
@@ -125,11 +129,11 @@ export const BoardForm = () => {
           </div>
         </fieldset>
 
-        <Accordion>
+        <Accordion className="accordian" expanded={expanded === 'cheesePanel'} onChange={handleAccordianChange('cheesePanel')}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
+            aria-controls="cheesePanel-content"
+            id="cheesePanel-header">
             <h5>Cheeses</h5>
           </AccordionSummary>
           <AccordionDetails>
@@ -143,11 +147,11 @@ export const BoardForm = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion className="accordian" expanded={expanded === 'meatPanel'} onChange={handleAccordianChange('meatPanel')}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
+            aria-controls="meatPanel-content"
+            id="meatPanel-header">
             <h5>Meats</h5>
           </AccordionSummary>
           <AccordionDetails>
@@ -161,11 +165,11 @@ export const BoardForm = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion className="accordian" expanded={expanded === 'nutPanel'} onChange={handleAccordianChange('nutPanel')}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
+            aria-controls="nutPanel-content"
+            id="nutPanel-header">
             <h5>Nuts</h5>
           </AccordionSummary>
           <AccordionDetails>
@@ -179,11 +183,11 @@ export const BoardForm = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion className="accordian" expanded={expanded === 'fruitPanel'} onChange={handleAccordianChange('fruitPanel')}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
+            aria-controls="fruitPanel-content"
+            id="fruitPanel-header">
             <h5>Fruits</h5>
           </AccordionSummary>
           <AccordionDetails>
@@ -197,14 +201,15 @@ export const BoardForm = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion className="accordian" expanded={expanded === 'jam+spreadPanel'} onChange={handleAccordianChange('jam+spreadPanel')}>
           <AccordionSummary
+            className="accordian"
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
+            aria-controls="jam+spreadPanel-content"
+            id="jam+spreadPanel-header">
             <h5>Jams + Spreads</h5>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className="accordian">
             <fieldset>
               <BoardIngredientSelect
                 ingredientType="jam+spread"

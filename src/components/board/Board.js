@@ -2,11 +2,11 @@
 
 import React, { useContext } from "react"
 import { Link } from 'react-router-dom'
+import { BoardContext } from "./BoardProvider"
 import DislikeOn from "../../images/dislike-on.png"
 import DislikeOff from "../../images/dislike-off.png"
 import LikeOn from "../../images/like-on.png"
 import LikeOff from "../../images/like-off.png"
-import { BoardContext } from "./BoardProvider"
 
 export const Board = (props) => {
   const { addBoardLike, removeBoardLike, addBoardDislike, removeBoardDislike } = useContext(BoardContext)

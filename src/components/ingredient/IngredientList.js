@@ -19,10 +19,12 @@ export const IngredientList = (props) => {
             if (ingredient.type === `${props.type}`) {
               return (
                 <>
-                  <IngredientCard
-                    key={ingredient.id}
-                    ingredient={ingredient}
-                  />
+                  <section className="ingredient">
+                    <IngredientCard
+                      key={ingredient.id}
+                      ingredient={ingredient}
+                    />
+                  </section>
                 </>
               )
             }

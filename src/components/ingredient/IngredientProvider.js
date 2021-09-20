@@ -3,11 +3,11 @@ import React, { useState, createContext } from "react"
 export const IngredientContext = createContext()
 
 export const IngredientProvider = (props) => {
-
   const URL = "http://localhost:8088"
 
   const [ingredients, setIngredients] = useState([])
   const [ingredientLikes, setIngredientLikes] = useState([])
+  const [ingredientDislikes, setIngredientDislikes] = useState([])
 
   const getIngredients = () => {
     return fetch(`${URL}/ingredients?_expand=image`)
@@ -55,9 +55,33 @@ export const IngredientProvider = (props) => {
     .then(getIngredientLikes)
   }
 
+  const getIngredientDislikes = () => {
+    return fetch(`${URL}/ingredientDislikes`)
+    .then(res => res.json())
+    .then(setIngredientDislikes)
+  }
+
+  const addIngredientDislike = ingredientDislikeObj => {
+    return fetch(`${URL}/ingredientDislikes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(ingredientDislikeObj)
+    })
+    .then(getIngredientDislikes)
+  }
+
+  const removeIngredientDislike = ingredientDislikeId => {
+    return fetch(`${URL}/ingredientDislikes/${ingredientDislikeId}`, {
+      method: "DELETE"
+    })
+    .then(getIngredientDislikes)
+  }
+
   return (
     <IngredientContext.Provider value={{
-      ingredients, addIngredient, getIngredients, getIngredientByType, ingredientLikes, getIngredientLikes, addIngredientLike, removeIngredientLike
+      ingredients, addIngredient, getIngredients, getIngredientByType, ingredientLikes, getIngredientLikes, addIngredientLike, removeIngredientLike, ingredientDislikes, getIngredientDislikes, addIngredientDislike, removeIngredientDislike
     }}>
       {props.children}
     </ IngredientContext.Provider>
