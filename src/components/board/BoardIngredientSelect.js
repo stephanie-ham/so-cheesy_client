@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { IngredientContext } from "../ingredient/IngredientProvider"
 import { IngredientCard } from "../ingredient/IngredientCard"
-import { Checkbox, FormGroup } from "@material-ui/core"
 
 export const BoardIngredientSelect = (props) => {
 
@@ -44,21 +43,15 @@ export const BoardIngredientSelect = (props) => {
                       isForm={true}
                     />
                     <div className="form__checkbox--container">
-                      <FormGroup>
-                        <Checkbox
+                        <input
+                          className="checkbox"
                           onChange={handleChange}
                           name={`${props.ingredientType}-${ingredient.id}`}
+                          type="checkbox"
                           id={`${props.ingredientType}-${ingredient.id}`}
                           key={ingredient.id}
                           value={ingredient.id}
-                          sx={{
-                            color: "#fefcfa",
-                            '&.Mui-checked': {
-                              color: "#fefcfa",
-                            },
-                          }}
                         />
-                      </FormGroup>
                     </div>
                   </div>
                 </>

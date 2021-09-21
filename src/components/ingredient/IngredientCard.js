@@ -56,7 +56,6 @@ export const IngredientCard = (props) => {
             card={props.ingredient}
           />
           <IngredientButton
-            key={props.ingredient.id}
             ingredient={props.ingredient}
             ingredientLikeId={findIngredientLikeId(props.ingredient)}
             isLiked={isIngredientLiked(props.ingredient)}

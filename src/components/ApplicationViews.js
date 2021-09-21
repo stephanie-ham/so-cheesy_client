@@ -18,6 +18,9 @@ import HeaderFriend from "../images/header-friend.jpg"
 import "./board/boardform.css"
 import "../styles/button.css"
 
+import { FormList } from "./form/FormList"
+import { FormHeader } from "./form/FormHeader"
+
 export const ApplicationViews = () => {
   return (
     <>
@@ -43,22 +46,31 @@ export const ApplicationViews = () => {
                   <Header
                     imageSource={HeaderFriend} className="header__component"
                   />
-                  <section className="friend__components">
 
-                    <div className="friend__component">
-                      <FriendList />
-                    </div>
-                    <div className="user__sidebar">
-                      <UserList />
-                    </div>
-                  </section>
                 </Route>
+                <Route path="/TESTform">
+                  <Header
+                    imageSource={HeaderCreate} className="header__component"
+                  />
+                  <FormHeader className="padding main__component" />
+                </Route>
+                <section className="friend__components">
+                  {/* <div className="friend__component">
+                    <FriendList />
+                  </div> */}
+                  {/* <div className="user__sidebar">
+                    <UserList />
+                  </div> */}
+                </section>
               </section>
 
               <section className="padding">
-                <Route path="/create/form">
-                  <BoardForm />
+                <Route path="/TESTform/create">
+                  <FormList />
                 </Route>
+                {/* <Route path="/create/form">
+                  <BoardForm />
+                </Route> */}
                 <Route exact path="/board/detail/:boardId(\d+)">
                   <BoardDetail />
                 </Route>
@@ -78,7 +90,7 @@ export const ApplicationViews = () => {
                   <IngredientList type="jam+spread" title="Jams + Spreads" />
                 </Route>
               </section>
-            </FriendProvider>
+            </ FriendProvider>
           </ UserProvider>
         </ IngredientProvider>
       </ BoardProvider>

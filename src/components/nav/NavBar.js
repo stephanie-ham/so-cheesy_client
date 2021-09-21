@@ -58,6 +58,9 @@ export const NavBar = () => {
             <Link className="navbar__item link" color="inherit" to="/friends">
               friends
             </Link>
+            <Link className="navbar__item link" color="inherit" to="/TESTform">
+              TESTform
+            </Link>
           </Breadcrumbs>
         </section >
         <section className="navbar__right">
