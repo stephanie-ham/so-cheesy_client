@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { Card } from "../card/Card"
 import { IngredientButton } from "./IngredientButton"
 import { IngredientContext } from "./IngredientProvider"
 
@@ -50,15 +51,10 @@ export const IngredientCard = (props) => {
   return (
     <>
       <section className="ingredient" key={props.ingredient.id} type={props.ingredient.type}>
-        <div className="ingredient__container">
-          <div className="ingredient__image">
-            <img src={`/images/${props.ingredient.image.url}`} alt="" />
-          </div>
-          <div className="ingredient__info" key={props.ingredient.id}>
-            <h5 className="ingredient__name">{props.ingredient.name}</h5>
-            {props.boardIngredientId ? <><h6 className="ingredient__type">{props.ingredient.type}</h6></> : <> </>}
-          </div>
-        </div>
+          <Card 
+            key={props.ingredient.id}
+            card={props.ingredient}
+          />
           <IngredientButton
             key={props.ingredient.id}
             ingredient={props.ingredient}

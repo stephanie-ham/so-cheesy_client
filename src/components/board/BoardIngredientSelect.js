@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from "react"
 import { IngredientContext } from "../ingredient/IngredientProvider"
 import { IngredientCard } from "../ingredient/IngredientCard"
 import { Checkbox, FormGroup } from "@material-ui/core"
-import "../ingredient/ingredient.css"
 
 export const BoardIngredientSelect = (props) => {
+
   const { ingredients, getIngredients } = useContext(IngredientContext);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export const BoardIngredientSelect = (props) => {
     }
     props.setIngredients(ingredientArray)
   }
+
 
   return (
     <div className="form-group">

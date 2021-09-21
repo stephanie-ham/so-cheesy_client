@@ -5,7 +5,6 @@ import { useParams, Link } from "react-router-dom"
 import { BoardContext } from "./BoardProvider";
 import { IngredientContext } from "../ingredient/IngredientProvider";
 import { IngredientCard } from "../ingredient/IngredientCard";
-import "../ingredient/ingredient.css"
 
 export const BoardDetail = () => {
   const { boardIngredients, getBoardIngredients, boards, getBoards } = useContext(BoardContext)

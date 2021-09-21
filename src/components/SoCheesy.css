@@ -60,6 +60,7 @@ button {
 }
 
 .main__component {
+  flex: 1;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -94,8 +95,8 @@ button {
 
 .page__title {
   display: flex;
-  justify-content: center;
   width: 100%;
+  justify-content: center;
   padding-top: 2rem;
   text-align: center;
 }
@@ -109,12 +110,41 @@ button {
   text-align: center;
 }
 
-.main__component {
-  width: 100%;
-}
-
 .header__page {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  min-height: 100%;
+}
+
+.friend__components {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.friend__component {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding-left: 3rem;
+}
+
+.user__sidebar {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding-right: 3rem;
+  padding-bottom: 0;
+  /* background-color: #7f909375; */
+  background-color: #d38f798c;
 }

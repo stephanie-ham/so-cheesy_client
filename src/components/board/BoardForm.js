@@ -7,7 +7,8 @@ import { AccordionDetails, AccordionSummary } from "@material-ui/core"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import "./boardform.css"
 
-export const BoardForm = () => {
+export const BoardForm  = () => {
+
   const [expanded, setExpanded] = React.useState(false);
   const { addFullBoard } = useContext(BoardContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -133,8 +134,10 @@ export const BoardForm = () => {
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="cheesePanel-content"
-            id="cheesePanel-header">
-            <h5>Cheeses</h5>
+            id="cheesePanel-header"
+            sx={{ height: 1}}
+            >
+              <h5>Cheeses</h5>
           </AccordionSummary>
           <AccordionDetails>
             <fieldset>

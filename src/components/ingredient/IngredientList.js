@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
-import "./ingredient.css"
+import "../../styles/list.css"
 
 export const IngredientList = (props) => {
   const { ingredients, getIngredients } = useContext(IngredientContext)

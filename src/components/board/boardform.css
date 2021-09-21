@@ -24,31 +24,10 @@ fieldset {
   justify-content: center;
 }
 
-.form__ingredient--list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.form__ingredient--card {
-  flex: 0 25 15%;
-  margin: 1.9rem .8rem 0 .8rem;
-  min-width: 8rem;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.form__ingredient {
-  position: relative;
-  margin-bottom: 1rem;
-  flex: 0 15 15%;
-  display: flex;
-}
-
 .form__checkbox--container {
   position: absolute;
-  right: 6.5rem;
-  top: 1.5rem;
+  right: 5rem;
+  top: .8rem;
 }
 
 .list__label {
@@ -59,5 +38,13 @@ fieldset {
 }
 
 .accordian {
+  background-color: #fefcfa;
+}
+
+.MuiAccordionSummary-root {
+  background-color: #fefcfa;
+}
+
+.MuiButtonBase-root {
   background-color: #fefcfa;
 }
