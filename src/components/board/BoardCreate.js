@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import "./boardform.css"
-import { useHistory } from "react-router-dom"
+import { useHistory, Redirect } from "react-router-dom"
 
 export const BoardCreate = () => {
   const [disabled, setDisabled] = useState(false)
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleOpenForm = () => {
     setDisabled(true)
-    history.push("/create/form")
+    return <Redirect push to="/TESTform/create" />
   }
 
   return (

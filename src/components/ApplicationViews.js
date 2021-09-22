@@ -9,7 +9,6 @@ import { IngredientProvider } from "./ingredient/IngredientProvider"
 import { IngredientList } from "./ingredient/IngredientList"
 import { BoardProvider } from "./board/BoardProvider"
 import { BoardCreate } from "./board/BoardCreate"
-import { BoardForm } from "./board/BoardForm"
 import { BoardList } from "./board/BoardList"
 import { BoardDetail } from "./board/BoardDetail"
 import HeaderHome from "../images/header-home.jpg"
@@ -20,6 +19,7 @@ import "../styles/button.css"
 
 import { FormList } from "./form/FormList"
 import { FormHeader } from "./form/FormHeader"
+// import ScrollToTop from './components/ScrollToTop';
 
 export const ApplicationViews = () => {
   return (
@@ -28,49 +28,41 @@ export const ApplicationViews = () => {
         <IngredientProvider>
           <UserProvider>
             <FriendProvider>
-
               <section className="header__page">
                 <Route exact path="/">
-                  <Header
-                    imageSource={HeaderHome} className="header__component"
-                  />
+                  <Header imageSource={HeaderHome} />
+                  <BoardList className="padding main__component" />
+                </Route>
+                <Route exact path="/boards/:userId(\d+)">
+                  <Header imageSource={HeaderHome} />
                   <BoardList className="padding main__component" />
                 </Route>
                 <Route path="/create">
-                  <Header
-                    imageSource={HeaderCreate} className="header__component"
-                  />
+                  <Header imageSource={HeaderCreate} />
                   <BoardCreate className="padding main__component" />
                 </Route>
                 <Route path="/friends">
-                  <Header
-                    imageSource={HeaderFriend} className="header__component"
-                  />
-
+                  <Header imageSource={HeaderFriend} />
                 </Route>
                 <Route path="/TESTform">
-                  <Header
-                    imageSource={HeaderCreate} className="header__component"
-                  />
+                  <Header imageSource={HeaderCreate} />
                   <FormHeader className="padding main__component" />
                 </Route>
                 <section className="friend__components">
-                  {/* <div className="friend__component">
-                    <FriendList />
-                  </div> */}
-                  {/* <div className="user__sidebar">
-                    <UserList />
-                  </div> */}
+                  <Route exact path="/friends">
+                    <div className="friend__component">
+                      <FriendList />
+                    </div>
+                    <div className="user__sidebar">
+                      <UserList />
+                    </div>
+                  </Route>
                 </section>
               </section>
-
               <section className="padding">
                 <Route path="/TESTform/create">
                   <FormList />
                 </Route>
-                {/* <Route path="/create/form">
-                  <BoardForm />
-                </Route> */}
                 <Route exact path="/board/detail/:boardId(\d+)">
                   <BoardDetail />
                 </Route>

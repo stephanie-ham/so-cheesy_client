@@ -8,7 +8,7 @@ export const UserProvider = (props) => {
   const [users, setUsers] = useState([])
 
   const getUsers = () => {
-    return fetch(`${URL}/users`)
+    return fetch(`${URL}/users?_expand=image`)
     .then(res => res.json())
     .then(setUsers)
   }

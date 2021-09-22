@@ -60,7 +60,7 @@ export const BoardDetail = () => {
             })
           }
         </section>
-        <section className="button__container">
+        <section className="board--button__container">
           <Link to={`/`}>
             <button className="mediumButton returnhome__button">
               Back to Feed

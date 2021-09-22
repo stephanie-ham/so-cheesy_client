@@ -126,9 +126,7 @@ button {
 }
 
 .friend__component {
-  display: flex;
   flex: 3;
-  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
   margin: 0;
@@ -136,15 +134,12 @@ button {
 }
 
 .user__sidebar {
-  display: flex;
   flex: 1;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  /* width: 100%; */
   margin: 0;
-  padding-right: 3rem;
-  padding-bottom: 0;
-  /* background-color: #7f909375; */
+  padding: 0 3rem;
   background-color: #d38f798c;
 }
