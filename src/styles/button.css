@@ -4,6 +4,34 @@
   width: 16%;
 } */
 
+
+
+.small__button {
+  font-size: .7rem;
+  border-radius: 4px;
+  border: #423E49 1.8px solid;
+  padding: .2rem .4rem;
+  color: #F9F4ED;
+  background-color: #423E49;
+  margin-top: 0;
+}
+
+.small__button:hover:enabled {
+  background-color: #f9f4ed50;
+  font-weight: 500;
+  color: #423E49;
+  border: #423E49 2px solid;
+  box-shadow: 0px 0px 8px 1px rgba(91, 99, 102, 0.098);
+  cursor: pointer;
+}
+
+.small__button:disabled {
+  background-color: #7f909357;
+  font-weight: 500;
+  color: #7f90938a;
+  border: #7f909357 2px solid;
+}
+
 .mediumButton {
   font-size: .8rem;
   border-radius: 4px;

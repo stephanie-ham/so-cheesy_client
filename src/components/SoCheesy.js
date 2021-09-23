@@ -5,6 +5,8 @@ import { NavBar } from "./nav/NavBar"
 import { Footer } from "./footer/Footer"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { Header } from "./header/Header"
+import HeaderHome from "../images/header-home.jpg"
 import "./SoCheesy.css"
 
 export const SoCheesy = () => {
@@ -20,7 +22,6 @@ export const SoCheesy = () => {
                   <ApplicationViews className="main__component" />
                   <Footer className="main__component" />
                 </section>
-
               </>
             )
           } else {
@@ -28,9 +29,10 @@ export const SoCheesy = () => {
           }
         }}
       />
-
+      
       <Route path="/login">
-        <Login />
+        <Header imageSource={HeaderHome} className="main__component"/>
+        <Login className="main__component" />
       </Route>
       <Route path="/register">
         <Register />

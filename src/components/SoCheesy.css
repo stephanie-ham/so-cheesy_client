@@ -60,6 +60,7 @@ button {
 }
 
 .main__component {
+  flex: 1;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -77,9 +78,14 @@ button {
 }
 
 .padding {
-  padding: 0 8rem 3rem 8rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 0;
 }
 
+.padding-bottom {
+  padding-bottom: 3rem;
+}
 
 .feed__components {
   display: flex;
@@ -94,8 +100,8 @@ button {
 
 .page__title {
   display: flex;
-  justify-content: center;
   width: 100%;
+  justify-content: center;
   padding-top: 2rem;
   text-align: center;
 }
@@ -104,17 +110,42 @@ button {
   display: flex;
   justify-content: center;
   margin-top: 0;
+  padding-top: 0;
   width: 100%;
-  padding: .5rem 2rem;
   text-align: center;
-}
-
-.main__component {
-  width: 100%;
 }
 
 .header__page {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  min-height: 100%;
+}
+
+.friend__components {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.friend__component {
+  flex: 3;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding-left: 5rem;
+  padding-right: 3rem;
+}
+
+.user__sidebar {
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* width: 100%; */
+  margin-left: 1rem;
+  padding: 0 2rem 0 2rem;
+  background-color: #d38f7962;
 }

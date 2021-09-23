@@ -1,0 +1,84 @@
+.ingredient__list, .form__ingredient--list, .friend__list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ingredient, .friend {
+  flex: 0 25 15%;
+  margin: 1rem .8rem 0 .8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 8rem;
+}
+
+.fl--padding {
+ margin-right: 2rem;
+}
+
+
+
+.user__list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user {
+  margin: 1rem 2rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 5rem;
+  max-width: 8rem;
+  justify-content: center;
+}
+
+.ingredient img, .user img, .form__ingredient img, .friend img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: initial; /* why does this make this work?! */
+  overflow: hidden;
+  border-radius: 5px 5px 0 0 ;
+}
+
+.form__ingredient {
+  position: relative;
+  flex: 0 25 15%;
+  margin: 1rem .8rem 0 .8rem;
+  display: flex;
+  justify-content: center;
+  min-width: 8rem;
+}
+
+.user--button__container {
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+
+.user__container:hover {
+  animation: wiggle .5s 1;
+  cursor: pointer;
+}
+
+@-webkit-keyframes wiggle {
+  0% {-webkit-transform: rotate(.5deg);}
+  50% {-webkit-transform: rotate(-.5deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+
+@-ms-keyframes wiggle {
+  0% {-ms-transform: rotate(.5deg);}
+  50% {-ms-transform: rotate(-.5deg);}
+  100% {-ms-transform: rotate(0deg);}
+}
+
+@keyframes wiggle {
+  0% {transform: rotate(.5deg);}
+  50% {transform: rotate(-.5deg);}
+  100% {transform: rotate(0deg);}
+}

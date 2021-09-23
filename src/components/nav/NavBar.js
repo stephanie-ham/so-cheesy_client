@@ -52,11 +52,11 @@ export const NavBar = () => {
             <Link className="navbar__item link" color="inherit" to="/">
               logo
             </Link>
-            <Link className="navbar__item link" color="inherit" to="/">
-              home
-            </Link>
             <Link className="navbar__item link" color="inherit" to="/create">
               create
+            </Link>
+            <Link className="navbar__item link" color="inherit" to="/friends">
+              friends
             </Link>
           </Breadcrumbs>
         </section >

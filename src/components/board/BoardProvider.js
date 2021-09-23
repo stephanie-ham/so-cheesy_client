@@ -15,6 +15,11 @@ export const BoardProvider = (props) => {
       .then(setBoards)
   }
 
+  const getBoardsByUserId = (userId) => {
+    return fetch(`${URL}/boards/${userId}`)
+    .then(res => res.json())
+  }
+
   const addFullBoard = (boardObj, ingredients) => {
     return fetch(`${URL}/boards`, {
       method: "POST",
@@ -100,10 +105,11 @@ export const BoardProvider = (props) => {
       })
         .then(getBoardDislikes)
     }
+    
 
     return (
       <BoardContext.Provider value={{
-        boards, getBoards, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike, addFullBoard
+        boards, getBoards, boardIngredients, getBoardIngredients, addBoardIngredient, boardLikes, getBoardLikes, addBoardLike, removeBoardLike, boardDislikes, getBoardDislikes, addBoardDislike, removeBoardDislike, addFullBoard, getBoardsByUserId
       }}>
         {props.children}
       </BoardContext.Provider>
