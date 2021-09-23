@@ -6,7 +6,7 @@ import { UserContext } from "./UserProvider"
 import { FriendContext } from "../friend/FriendProvider"
 import "../../styles/list.css"
 
-export const UserList = () => {
+export const UserList = (props) => {
   const { users, getUsers } = useContext(UserContext)
   const { friends, getFriends } = useContext(FriendContext)
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
@@ -34,14 +34,26 @@ export const UserList = () => {
     return friendId
   }
 
+  const findUserId = (user) => {
+    let userId
+
+    friends.map((friend) => {
+      if (currentUser === friend.currentUserId &&
+        user.id === friend.userId) {
+        userId = friend.userId
+      }
+    })
+    return userId
+  }
+
   return (
     <>
       <h2 className="page__title"> ADD FRIENDS </h2>
-      <section className="user__list">
+      <section className="user__list padding-bottom">
         {
-          users.filter(user => user.id !== currentUser).map(
+          users.filter(user =>  user.id !== currentUser &&
+            user.id !== parseInt(findUserId(user))).map(
             user => {
-              if (!user.isFriend) {
                 return (
                   <section className="user">
                     <UserCard
@@ -52,7 +64,6 @@ export const UserList = () => {
                     />
                   </section>
                 )
-              }
             })
         }
       </section>

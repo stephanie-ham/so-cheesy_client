@@ -19,7 +19,6 @@ export const UserButton = (props) => {
       userId: parseInt(props.user.id),
       currentUserId: currentUser
     })
-      .then(() => history.push(`/friends`))
   }
 
   const addFriendButton = () => {
@@ -35,9 +34,6 @@ export const UserButton = (props) => {
 
   const handleRemoveFriend = () => {
     removeFriend(props.friendId)
-      .then(() => {
-        history.push("/friends")
-      })
   }
 
   const removeFriendButton = () => {

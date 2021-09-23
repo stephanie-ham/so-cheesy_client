@@ -3,6 +3,7 @@ import { Card } from "../card/Card"
 import { IngredientButton } from "./IngredientButton"
 
 export const IngredientCard = (props) => {
+
   return (
     <>
       <section className="ingredient" key={props.ingredient.id} type={props.ingredient.type}>
@@ -10,6 +11,7 @@ export const IngredientCard = (props) => {
             key={props.ingredient.id}
             card={props.ingredient}
             boardIngredientId={props.boardIngredientId}
+            
           />
           <IngredientButton
             ingredient={props.ingredient}
@@ -17,7 +19,6 @@ export const IngredientCard = (props) => {
             isLiked={props.isLiked}
             ingredientDislikeId={props.ingredientDislikeId}
             isDisliked={props.isDisliked}
-            isForm={props.isForm}
           />
       </section>
     </>

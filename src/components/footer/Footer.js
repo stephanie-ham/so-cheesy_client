@@ -40,7 +40,7 @@ export const Footer = () => {
       <section className="footer__bottom">
         <div className="footer__bottom--container">
           <div className="fb__pinterest">Follow us on <a className="pinterest__link" href="https://www.pinterest.com/blockcharcuterie"><img className="fb__pinterest--logo" src={Pinterest} alt="" /> <b>Pinterest</b></a> for inspiration!</div>
-          <p className="fb__copyright">	&#169; 2021 <strong>Block.</strong> Charcuterie Maker &#160; | &#160; All Rights Reserved</p>
+          <p className="fb__copyright">	&#169; 2021 Block. Charcuterie Maker</p>
         </div>
       </section>
     </footer>

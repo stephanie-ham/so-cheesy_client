@@ -35,18 +35,14 @@ export const ApplicationViews = () => {
                 </Route>
                 <Route exact path="/boards/:userId(\d+)">
                   <Header imageSource={HeaderHome} />
-                  <BoardList className="padding main__component" />
-                </Route>
-                <Route path="/create">
-                  <Header imageSource={HeaderCreate} />
-                  <BoardCreate className="padding main__component" />
+                  <BoardList className="padding  main__component" />
                 </Route>
                 <Route path="/friends">
                   <Header imageSource={HeaderFriend} />
                 </Route>
-                <Route path="/TESTform">
+                <Route path="/create">
                   <Header imageSource={HeaderCreate} />
-                  <FormHeader className="padding main__component" />
+                  <FormHeader className="padding  main__component" />
                 </Route>
                 <section className="friend__components">
                   <Route exact path="/friends">
@@ -59,8 +55,8 @@ export const ApplicationViews = () => {
                   </Route>
                 </section>
               </section>
-              <section className="padding">
-                <Route path="/TESTform/create">
+              <section className="padding ">
+                <Route path="/create/ingredients">
                   <FormList />
                 </Route>
                 <Route exact path="/board/detail/:boardId(\d+)">

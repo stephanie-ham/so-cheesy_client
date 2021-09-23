@@ -4,11 +4,49 @@ import { IngredientCard } from "../ingredient/IngredientCard"
 
 export const BoardIngredientSelect = (props) => {
 
-  const { ingredients, getIngredients } = useContext(IngredientContext);
+  const { ingredients, getIngredients, ingredientLikes, getIngredientLikes, ingredientDislikes, getIngredientDislikes } = useContext(IngredientContext)
+  const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
 
   useEffect(() => {
-    getIngredients()
+    getIngredients().then(getIngredientLikes())
+    .then(getIngredientDislikes())
   }, [])
+
+  const isIngredientLiked = (ingredient) => {
+    return ingredientLikes.find((ingredientLike) => (
+      currentUser === ingredientLike.userId &&
+      ingredient.id === ingredientLike.ingredientId
+    ))
+  }
+
+  const findIngredientLikeId = (ingredient) => {
+    let ingredientLikeId
+    ingredientLikes.map((ingredientLike) => {
+      if (currentUser === ingredientLike.userId &&
+        ingredient.id === ingredientLike.ingredientId) {
+          ingredientLikeId = ingredientLike.id
+        }
+    })
+    return ingredientLikeId
+  }
+
+  const isIngredientDisliked = (ingredient) => {
+    return ingredientDislikes.find((ingredientDislike) => (
+      currentUser === ingredientDislike.userId &&
+      ingredient.id === ingredientDislike.ingredientId
+    ))
+  }
+
+  const findIngredientDislikeId = (ingredient) => {
+    let ingredientDislikeId
+    ingredientDislikes.map((ingredientDislike) => {
+      if (currentUser === ingredientDislike.userId &&
+        ingredient.id === ingredientDislike.ingredientId) {
+          ingredientDislikeId = ingredientDislike.id
+        }
+    })
+    return ingredientDislikeId
+  }
 
   const handleChange = (event) => {
 
@@ -40,7 +78,10 @@ export const BoardIngredientSelect = (props) => {
                       value={ingredient.id}
                       ingredient={ingredient}
                       ingredientType={ingredient.type}
-                      isForm={true}
+                      ingredientLikeId={findIngredientLikeId(ingredient)}
+                      isLiked={isIngredientLiked(ingredient)}
+                      ingredientDislikeId={findIngredientDislikeId(ingredient)}
+                      isDisliked={isIngredientDisliked(ingredient)}
                     />
                     <div className="form__checkbox--container">
                         <input

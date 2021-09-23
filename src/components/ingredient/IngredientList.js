@@ -51,7 +51,7 @@ export const IngredientList = (props) => {
   return (
     <>
       <h2 className="page__title"> {props.title} </h2>
-      <section className="ingredient__list">
+      <section className="ingredient__list padding-bottom">
         {
           ingredients.map(ingredient => {
             if (ingredient.type === `${props.type}`) {
@@ -65,7 +65,6 @@ export const IngredientList = (props) => {
                       isLiked={isIngredientLiked(ingredient)}
                       ingredientDislikeId={findIngredientDislikeId(ingredient)}
                       isDisliked={isIngredientDisliked(ingredient)}
-                      isForm={props.isForm}
                     />
                   </section>
                 </>

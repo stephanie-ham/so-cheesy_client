@@ -78,9 +78,14 @@ button {
 }
 
 .padding {
-  padding: 0 8rem 3rem 8rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 0;
 }
 
+.padding-bottom {
+  padding-bottom: 3rem;
+}
 
 .feed__components {
   display: flex;
@@ -130,7 +135,8 @@ button {
   justify-content: center;
   text-align: center;
   margin: 0;
-  padding-left: 3rem;
+  padding-left: 5rem;
+  padding-right: 3rem;
 }
 
 .user__sidebar {
@@ -139,7 +145,7 @@ button {
   justify-content: flex-start;
   align-items: flex-start;
   /* width: 100%; */
-  margin: 0;
-  padding: 0 3rem;
-  background-color: #d38f798c;
+  margin-left: 1rem;
+  padding: 0 2rem 0 2rem;
+  background-color: #d38f7962;
 }

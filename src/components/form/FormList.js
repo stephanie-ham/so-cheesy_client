@@ -5,6 +5,9 @@ import { BoardIngredientSelect } from "../board/BoardIngredientSelect"
 import "../board/boardform.css"
 
 export const FormList = () => {
+
+  
+
   const { addFullBoard } = useContext(BoardContext);
   const [isLoading, setIsLoading] = useState(true);
   const [cheeses, setCheeses] = useState([])
@@ -106,7 +109,7 @@ export const FormList = () => {
 
   return (
     <>
-      <form className="boardform">
+      <form className="boardform padding-bottom">
         <fieldset>
           <div className="form-group">
             <label className="page__title" htmlFor="title">Board Title:</label>

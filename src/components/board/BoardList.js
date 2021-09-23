@@ -6,10 +6,11 @@ import { Board } from "./Board"
 import { BoardContext } from "./BoardProvider"
 import { UserContext } from "../user/UserProvider"
 import "./board.css"
+import { UserList } from "../user/UserList"
 
 export const BoardList = () => {
   const { boards, getBoards, getBoardsByUserId, boardLikes, getBoardLikes, boardDislikes, getBoardDislikes } = useContext(BoardContext)
-  const { getUsers } = useContext(UserContext)
+  const { users, getUsers } = useContext(UserContext)
   const { userId } = useParams();
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
 
@@ -20,13 +21,17 @@ export const BoardList = () => {
     getBoards().then(getBoardLikes())
       .then(getBoardDislikes())
       .then(getUsers())
-      
+
   }, [])
 
   // const foundUserName = () => {
   //   const foundBoard = boards.filter(board => board.userId === parseInt(foundUserId()))
   //   return foundBoard.user.name
   // } //put in useeffect hook, call .then
+
+  const foundUserName = () => {
+
+  }
 
   const isBoardLiked = (board) => {
     return boardLikes.find((boardLike) => (
@@ -76,12 +81,37 @@ export const BoardList = () => {
     return foundUserId
   }
 
+  const findUserName = () => {
+    let foundUserName
+
+    users.filter(user => parseInt(userId) === user.id).map(user => {
+      foundUserName = user.name
+    })
+
+    return foundUserName
+  }
+
+  // const findUserName = () => {
+  //   let foundUserName 
+  //   if (userId) {
+  //       users.filter(user => parseInt(userId) === user.id).map(user => {
+  //         foundUserName = user.name
+  //       })
+
+  //   } else {
+  //     users.filter(user => currentUser === user.id).map(user => {
+  //       foundUserName = user.name
+  //     })
+  //   }
+  //   return foundUserName
+  // }
+
   return (
     <>
-      <h2 className="page__title">{`'s Boards`}</h2>
-      <section className="boardlist">
+      <h2 className="page__title">{userId ? <>{`${findUserName()}'s Boards`}</> : <>{"Your Boards"}</>}</h2>
+      <section className="boardlist padding-bottom">
         {
-          boards.filter(board => board.userId === parseInt(foundUserId()) ).map(board => {
+          boards.filter(board => board.userId === parseInt(foundUserId())).map(board => {
             return (
               <Board
                 key={board.id}

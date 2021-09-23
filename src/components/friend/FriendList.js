@@ -20,7 +20,7 @@ export const FriendList = (props) => {
   return (
     <>
       <h2 className="page__title"> FRIENDS </h2>
-      <section className="friend__list">
+      <section className="friend__list fl--padding padding-bottom">
         {
           friends.map(friend => {
             if (currentUser === friend.currentUserId) {
