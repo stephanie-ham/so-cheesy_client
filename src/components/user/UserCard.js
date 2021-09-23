@@ -24,7 +24,9 @@ export const UserCard = (props) => {
         <UserButton
           key={`UserButton--${props.user.id}`}
           user={props.user}
-          isFriend={props.isFriend} />
+          isFriend={props.isFriend}
+          friendId={props.friendId} />
+          
       </div>
     </>
   )

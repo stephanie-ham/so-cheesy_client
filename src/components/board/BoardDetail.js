@@ -9,7 +9,6 @@ import { IngredientCard } from "../ingredient/IngredientCard";
 export const BoardDetail = () => {
   const { boardIngredients, getBoardIngredients, boards, getBoards } = useContext(BoardContext)
   const { ingredients, getIngredients } = useContext(IngredientContext)
-  const [board, setBoard] = useState([])
   const { boardId } = useParams()
 
   useEffect(() => (
@@ -18,10 +17,21 @@ export const BoardDetail = () => {
       .then(getIngredients())
   ), [])
 
-  useEffect(() => {
-    const thisBoard = boards.find(b => b.id === parseInt(boardId)) || { board: {} }
-    setBoard(thisBoard)
-  }, [boardId])
+  // useEffect(() => {
+  //   const thisBoard = boards.find(b => b.id === parseInt(boardId)) || { board: {} }
+  //   setBoard(thisBoard)
+  // }, [boardId])
+
+  const findBoardName = () => {
+    let boardName 
+
+    boards.map(board => {
+      if (board.id === parseInt(boardId) ) {
+        boardName = board.title
+      }
+    })
+    return boardName
+  }
 
   const isBoardIngredient = (ingredient) => {
     return boardIngredients.find((boardIngredient) => (
@@ -43,9 +53,9 @@ export const BoardDetail = () => {
   return (
     <>
       <section className="board__ingredients">
-        <h2 className="page__title">{board.title}</h2>
-        <h5 className="ingredient__subtitle">Ingredients</h5>
-        <section className="ingredient__list">
+        <h2 className="page__title">{findBoardName()}</h2>
+        <h5 className="page__subtitle">Ingredients</h5>
+        <section className="ingredient__list ">
           {
             ingredients.map(ingredient => {
               if (isBoardIngredient(ingredient)) {
@@ -53,6 +63,7 @@ export const BoardDetail = () => {
                   <IngredientCard
                     key={ingredient.id}
                     ingredient={ingredient}
+                    isBoardIngredient={isBoardIngredient(ingredient)}
                     boardIngredientId={findBoardIngredientId(ingredient)}
                   />
                 )

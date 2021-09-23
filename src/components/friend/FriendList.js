@@ -17,28 +17,6 @@ export const FriendList = (props) => {
     getFriends().then(getUsers())
   }, [])
 
-  // return (
-  //   <>
-  //   <h2 className="page__title"> FRIENDS </h2>
-  //   <section className="friend__list">
-  //     {
-  //       friends.filter(friend => friend.currentUserId === currentUser).map(
-  //         friend => {
-  //           return (
-  //             <section className="friend">
-  //               <UserCard
-  //                 key={`friend--${friend.id}`}
-  //                 user={friend.user}
-  //                 friendId={friend.id}
-  //                 isFriend={friend.user}
-  //               />
-  //             </section>
-  //           )
-  //         })
-  //     }
-  //   </section>
-  // </>
-  // )
   return (
     <>
       <h2 className="page__title"> FRIENDS </h2>

@@ -7,18 +7,12 @@ import { UserContext } from "./UserProvider"
 export const UserButton = (props) => {
   const { friends, addFriend, removeFriend, getFriends } = useContext(FriendContext)
   const { getUsers } = useContext(UserContext)
-  const [friend, setFriend] = useState([{ user: {} }])
-  // const { friendId } = useParams();
   const history = useHistory();
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
 
   useEffect(() => {
     getFriends().then(getUsers())
-      .then(() => {
-        const thisFriend = friends.find(f => f.id === parseInt(props.friendId)) || { user: {} }
-        setFriend(thisFriend)
-      })
-  }, [props.friendId])
+  }, [])
 
   const handleSaveFriend = (user) => {
     addFriend({

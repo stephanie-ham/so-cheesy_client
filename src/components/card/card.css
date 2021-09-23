@@ -21,7 +21,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  min-height: 2rem;
+  min-height: 2.9rem;
+}
+
+.card__info--type {
+  min-height: 2.8rem;
 }
 
 .card__name {
@@ -32,9 +36,14 @@
 }
 
 .card__type {
-width: 100%;
-margin-bottom: .1rem;
-margin-top: .1rem;
+  display: flex;
+  width: 100%;
+  margin-bottom: .1rem;
+  margin-top: .1rem;
+  align-items: flex-end;
+  justify-content: right;
+  padding-right: 1rem;
+  opacity: 50%;
 }
 
 .card__buttons {
