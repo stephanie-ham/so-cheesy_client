@@ -37,3 +37,31 @@
   border: #F9F4ED 2px solid;
   color: #F9F4ED;
 }
+
+.nav--logo {
+  width: 42px;
+  padding-top: 3px;
+}
+
+.nav--logo:hover {
+  animation: wiggle .5s 1;
+  cursor: pointer;
+}
+
+@-webkit-keyframes wiggle {
+  0% {-webkit-transform: rotate(.7deg);}
+  50% {-webkit-transform: rotate(-.7deg);}
+  100% {-webkit-transform: rotate(0deg);}
+}
+
+@-ms-keyframes wiggle {
+  0% {-ms-transform: rotate(.7deg);}
+  50% {-ms-transform: rotate(-.7deg);}
+  100% {-ms-transform: rotate(0deg);}
+}
+
+@keyframes wiggle {
+  0% {transform: rotate(.7deg);}
+  50% {transform: rotate(-.7deg);}
+  100% {transform: rotate(0deg);}
+}

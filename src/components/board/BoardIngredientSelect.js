@@ -64,7 +64,7 @@ export const BoardIngredientSelect = (props) => {
 
 
   return (
-    <div className="form-group">
+    <div>
       <label component="legend" className="list__label" htmlFor="ingredientId">{props.labelName}</label>
       <div className="form__ingredient--list">
         {

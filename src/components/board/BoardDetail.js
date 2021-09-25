@@ -8,7 +8,7 @@ import { IngredientCard } from "../ingredient/IngredientCard";
 
 export const BoardDetail = () => {
   const { boardIngredients, getBoardIngredients, boards, getBoards } = useContext(BoardContext)
-  const { ingredients, getIngredients } = useContext(IngredientContext)
+  const { ingredients, getIngredients, ingredientLikes, getIngredientLikes, ingredientDislikes, getIngredientDislikes  } = useContext(IngredientContext)
   const { boardId } = useParams()
   const history = useHistory()
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"))
@@ -16,8 +16,45 @@ export const BoardDetail = () => {
   useEffect(() => (
     getBoards()
       .then(getBoardIngredients())
-      .then(getIngredients())
+      .then(getIngredients()).then(getIngredientLikes())
+      .then(getIngredientDislikes())
   ), [])
+
+  const isIngredientLiked = (ingredient) => {
+    return ingredientLikes.find((ingredientLike) => (
+      currentUser === ingredientLike.userId &&
+      ingredient.id === ingredientLike.ingredientId
+    ))
+  }
+
+  const findIngredientLikeId = (ingredient) => {
+    let ingredientLikeId
+    ingredientLikes.map((ingredientLike) => {
+      if (currentUser === ingredientLike.userId &&
+        ingredient.id === ingredientLike.ingredientId) {
+          ingredientLikeId = ingredientLike.id
+        }
+    })
+    return ingredientLikeId
+  }
+
+  const isIngredientDisliked = (ingredient) => {
+    return ingredientDislikes.find((ingredientDislike) => (
+      currentUser === ingredientDislike.userId &&
+      ingredient.id === ingredientDislike.ingredientId
+    ))
+  }
+
+  const findIngredientDislikeId = (ingredient) => {
+    let ingredientDislikeId
+    ingredientDislikes.map((ingredientDislike) => {
+      if (currentUser === ingredientDislike.userId &&
+        ingredient.id === ingredientDislike.ingredientId) {
+          ingredientDislikeId = ingredientDislike.id
+        }
+    })
+    return ingredientDislikeId
+  }
 
   const findBoardName = () => {
     let boardName
@@ -100,6 +137,10 @@ export const BoardDetail = () => {
                     ingredient={ingredient}
                     isBoardIngredient={isBoardIngredient(ingredient)}
                     boardIngredientId={findBoardIngredientId(ingredient)}
+                    ingredientLikeId={findIngredientLikeId(ingredient)}
+                    isLiked={isIngredientLiked(ingredient)}
+                    ingredientDislikeId={findIngredientDislikeId(ingredient)}
+                    isDisliked={isIngredientDisliked(ingredient)}
                   />
                 )
               }

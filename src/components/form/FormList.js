@@ -4,9 +4,9 @@ import { BoardContext } from "../board/BoardProvider"
 import { BoardIngredientSelect } from "../board/BoardIngredientSelect"
 import "../board/boardform.css"
 
-export const FormList = () => {
 
-  
+
+export const FormList = () => {
 
   const { addFullBoard } = useContext(BoardContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -112,20 +112,27 @@ export const FormList = () => {
       <form className="boardform padding-bottom">
         <fieldset>
           <div className="form-group">
-            <label className="page__title" htmlFor="title">Board Title:</label>
+            <label className="page__title form__label divider" htmlFor="title"><h5>Board Title:</h5></label>
             <input
               type="text"
               id="title"
               required autoFocus
-              className="form-control"
+              className="form--input"
               placeholder="Title of Board"
               onChange={handleInputChange}
             />
           </div>
         </fieldset>
 
-        <fieldset>
-          <h5>Cheeses</h5>
+        <button
+          className="mediumButton create__button">
+            <>Looking Gouda!</>
+        </button>
+
+        <fieldset className="fieldset--margin">
+          <div className="form--center">
+            <h4 className="form--label divider">Cheeses</h4>
+          </div>
           <BoardIngredientSelect
             ingredientType="cheese"
             setIngredients={handleSetCheeses}
@@ -133,8 +140,15 @@ export const FormList = () => {
           />
         </fieldset>
 
-        <fieldset>
-          <h5>Meats</h5>
+        <button
+          className="mediumButton create__button">
+            <>What a ham.</>
+        </button>
+
+        <fieldset className="fieldset--margin">
+          <div className="form--center">
+            <h4 className="form--label divider">Meats</h4>
+          </div>
           <BoardIngredientSelect
             ingredientType="meat"
             setIngredients={handleSetMeats}
@@ -142,8 +156,15 @@ export const FormList = () => {
           />
         </fieldset>
 
-        <fieldset>
-          <h5>Nuts</h5>
+        <button
+          className="mediumButton create__button">
+            <>Aw, nuts!</>
+        </button>
+
+        <fieldset className="fieldset--margin">
+          <div className="form--center">
+          <h4 className="form--label divider">Nuts</h4>
+          </div>
           <BoardIngredientSelect
             ingredientType="nut"
             setIngredients={handleSetNuts}
@@ -151,8 +172,15 @@ export const FormList = () => {
           />
         </fieldset>
 
-        <fieldset>
-          <h5>Fruits</h5>
+        <button
+          className="mediumButton create__button">
+            <>The perfect pear.</>
+        </button>
+
+        <fieldset className="fieldset--margin">
+          <div className="form--center">
+            <h4 className="form--label divider">Fruits</h4>
+          </div>
           <BoardIngredientSelect
             ingredientType="fruit"
             setIngredients={handleSetFruits}
@@ -160,8 +188,15 @@ export const FormList = () => {
           />
         </fieldset>
 
-        <fieldset>
-          <h5>Jams + Spreads</h5>
+        <button
+          className="mediumButton create__button">
+            <>Show me the honey.</>
+        </button>
+
+        <fieldset className="fieldset--margin">
+          <div className="form--center">
+            <h4 className="form--label divider">Jams + Spreads</h4>
+          </div>
           <BoardIngredientSelect
             ingredientType="jam+spread"
             setIngredients={handleSetJams}

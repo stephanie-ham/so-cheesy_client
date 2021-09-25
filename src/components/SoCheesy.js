@@ -32,7 +32,9 @@ export const SoCheesy = () => {
       
       <Route path="/login">
         <Header imageSource={HeaderHome} className="main__component"/>
-        <Login className="main__component" />
+        <div className="padding">
+        <Login />
+        </div>
       </Route>
       <Route path="/register">
         <Register />

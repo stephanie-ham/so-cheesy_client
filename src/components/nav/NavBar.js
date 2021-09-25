@@ -5,6 +5,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { Breadcrumbs } from "@material-ui/core";
+import NavLogo from "../../images/block-logo_100px.png"
 import "./NavBar.css"
 
 export const NavBar = () => {
@@ -50,7 +51,7 @@ export const NavBar = () => {
         <section className="navbar__left">
           <Breadcrumbs aria-label="breadcrumb">
             <Link className="navbar__item link" color="inherit" to="/">
-              logo
+              <img src={NavLogo} alt="" className="nav--logo" />
             </Link>
             <Link className="navbar__item link" color="inherit" to="/create">
               create

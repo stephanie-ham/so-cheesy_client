@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useHistory } from 'react-router-dom'
 import "../card/card.css"
-import User from "../../images/icon_cheese_orange.jpg"
+import User from "../../images/icon_user_orange-34.jpg"
 import { UserButton } from "./UserButton"
 
 export const UserCard = (props) => {

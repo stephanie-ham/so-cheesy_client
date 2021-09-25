@@ -17,19 +17,20 @@ fieldset {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  border: none;
 }
 
 .form-group {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 4rem 3rem;
+  padding: 0rem 3rem 4rem 3rem;
   justify-content: center;
 }
 
 .form__checkbox--container {
   position: absolute;
-  left: 5.9rem;
+  left: 6.3rem;
   top: 1.3rem;
 }
 
@@ -63,8 +64,6 @@ input[type=checkbox]:hover {
   height: 16px;
 }
 
-
-
 .list__label {
   display: flex;
   flex-wrap: wrap;
@@ -72,14 +71,39 @@ input[type=checkbox]:hover {
   text-align: center;
 }
 
-.accordian {
-  background-color: #fefcfa;
+.form--input {
+  width: 30%;
+  height: 30px;
+  text-transform: lowercase;
+  border: #7f909379 1px solid;
+  border-radius: 3px;
 }
 
-.MuiAccordionSummary-root {
-  background-color: #fefcfa;
+.input__label {
+  padding-top: 0;
 }
 
-.MuiButtonBase-root {
-  background-color: #fefcfa;
+input[type=text]:focus {
+  border: #7f909379 2px solid;
+  background-color: #7f90930c;
+  outline: none;
+}
+
+.form--label {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-size: 1.3rem;
+}
+
+.fieldset--margin {
+  margin-bottom: 1rem;
+}
+
+.form--center {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }

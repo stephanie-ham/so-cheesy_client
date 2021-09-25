@@ -20,10 +20,10 @@ export const FormHeader = () => {
           <p className="create__subtitle">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
         </div>
         <button
-          className="mediumButton create__button "
+          className="mediumButton create__button"
           disabled={disabled}
           onClick={handleOpenForm}>
-          {disabled ? <>Looking Gouda!</> : <>Let's Jam!</>}
+          {disabled ? <>Sweet.</> : <>Let's Jam!</>}
         </button>
       </section>
     </>

@@ -10,6 +10,8 @@ export const UserButton = (props) => {
   const history = useHistory();
   const currentUser = parseInt(sessionStorage.getItem("block-cheese-app_user"));
 
+  
+
   useEffect(() => {
     getFriends().then(getUsers())
   }, [])
