@@ -11,7 +11,7 @@ accessing, liking and disliking their friends’ boards.
 
 ## Installation and Setup Instructions for Client
 
-Clone down this repository. You will need `node`and `npm` installed \ 
+Clone down this repository. You will need `node`and `npm` installed \
 globally on your machine.  
 
 Installation:
