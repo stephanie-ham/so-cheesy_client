@@ -1,5 +1,5 @@
 
-# BLOCK. Charcuterie Maker
+# BLOCK. Charcuterie Maker 🧀
 
 Block. Charcuterie Maker, built using React, allows users to build a charcuterie board and save it to their profile. Users are presented with all the ingredients in an easy to use multi-select form. Ingredients are stored in a board to access any time they log in. They can savor their favorite ingredients and boards, & shelf the ones they didn’t love. Users can add and remove friends while accessing, liking and disliking their friends’ boards.
 
