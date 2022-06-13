@@ -36,7 +36,7 @@ Login Credentials:
 ## Installation and Setup Instructions for Server
 
 Clone down the `so-cheesy_api` repository, found here: \
-`https://github.com/hamiltons621/so-cheesy_api`. You will \
+`https://github.com/stephanie-ham/so-cheesy_api`. You will \
 need `json-server` installed globally on your machine.
 
 To Start Server:
